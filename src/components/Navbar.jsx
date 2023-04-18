@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FiShoppingCart } from "react-icons/fi";
+import { MdOutlineAccountCircle } from "react-icons/md";
+import { RiEarthLine } from "react-icons/ri";
+import { BsSearch } from "react-icons/bs";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="flex justify-between items-center mx-10 my-5">
       <div>
         <Link to={"/"}>
           <svg
@@ -20,43 +24,54 @@ const Navbar = () => {
           </svg>
         </Link>
       </div>
-      <ul>
+      <div className="flex flex-col justify-around items-center w-[55px] h-[55px] p-1 border-2 border-black rounded md:hidden">
+        <div className="w-[90%] h-[10%] bg-black"></div>
+        <div className="w-[90%] h-[10%] bg-black"></div>
+        <div className="w-[90%] h-[10%] bg-black"></div>
+      </div>
+      <ul className="hidden md:flex justify-center items-center gap-4 lg:gap-6">
         <li>
-          <a href="#" className="capitalize text-[#121212] font-light">
+          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
             About Us
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize text-[#121212] font-light">
+          <a href="#" className="capitalize lg:text-[19px]  text-[#121212] font-light">
             Women
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize text-[#121212] font-light">
+          <a href="#" className="capitalize lg:text-[19px]  text-[#121212] font-light">
             Men
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize text-[#121212] font-light">
+          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
             Beauty
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize text-[#121212] font-light">
+          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
             accesories
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize text-[#121212] font-light">
+          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
             Blog
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize text-[#121212] font-light">
+          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
             contact
           </a>
         </li>
       </ul>
+      <div className="hidden md:flex gap-3">
+        <BsSearch size={20}/>
+        <RiEarthLine size={20}/>
+        <MdOutlineAccountCircle size={20}/>
+        <FiShoppingCart size={20}/>
+      </div>
     </nav>
   );
 };
