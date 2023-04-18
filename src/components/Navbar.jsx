@@ -25,52 +25,65 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex flex-col justify-around items-center w-[55px] h-[55px] p-1 border-2 border-black rounded md:hidden">
-        <div className="w-[90%] h-[10%] bg-black"></div>
-        <div className="w-[90%] h-[10%] bg-black"></div>
-        <div className="w-[90%] h-[10%] bg-black"></div>
+        <div className="w-[90%] h-[10%] bg-black rounded"></div>
+        <div className="w-[90%] h-[10%] bg-black rounded"></div>
+        <div className="w-[90%] h-[10%] bg-black rounded"></div>
       </div>
       <ul className="hidden md:flex justify-center items-center gap-4 lg:gap-6">
         <li>
-          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
+          <a
+            href="#"
+            className="capitalize lg:text-[19px] text-[#121212] font-light"
+          >
             About Us
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize lg:text-[19px]  text-[#121212] font-light">
-            Women
+          <a
+            href="#"
+            className="capitalize lg:text-[19px]  text-[#121212] font-light"
+          >
+            Clothes
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize lg:text-[19px]  text-[#121212] font-light">
-            Men
+          <a
+            href="#"
+            className="capitalize lg:text-[19px] text-[#121212] font-light"
+          >
+            Electronics
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
-            Beauty
+          <a
+            href="#"
+            className="capitalize lg:text-[19px] text-[#121212] font-light"
+          >
+            Furniture
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
-            accesories
+          <a
+            href="#"
+            className="capitalize lg:text-[19px] text-[#121212] font-light"
+          >
+            Shoes
           </a>
         </li>
         <li>
-          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
-            Blog
-          </a>
-        </li>
-        <li>
-          <a href="#" className="capitalize lg:text-[19px] text-[#121212] font-light">
-            contact
+          <a
+            href="#"
+            className="capitalize lg:text-[19px] text-[#121212] font-light"
+          >
+            Others
           </a>
         </li>
       </ul>
-      <div className="hidden md:flex gap-3">
-        <BsSearch size={20}/>
-        <RiEarthLine size={20}/>
-        <MdOutlineAccountCircle size={20}/>
-        <FiShoppingCart size={20}/>
+      <div className="hidden md:flex gap-3 lg:gap-7">
+        <BsSearch size={20} />
+        <RiEarthLine size={20} />
+        <MdOutlineAccountCircle size={20} />
+        <FiShoppingCart size={20} />
       </div>
     </nav>
   );
