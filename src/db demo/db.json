@@ -1,0 +1,756 @@
+[
+    {
+        "title": "T-shirt",
+        "category": "women",
+        "price": "$25.25",
+        "description": "this is a women T-shirt",
+        "color": ["red", "green", "blue"],
+        "size": ["s", "l", "xl"],
+        "availableNum": 3,
+        "score": "4.3",
+        "soldNum": "351",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "gown",
+        "category": "women",
+        "price": "$15.00",
+        "description": "this is a women gown",
+        "color": ["red", "blue"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 5,
+        "score": "2.3",
+        "soldNum": "51",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 20
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "Jacket",
+        "category": "women",
+        "price": "$30.00",
+        "description": "this is a women jacket",
+        "color": ["red", "green", "blue"],
+        "size": ["xl"],
+        "availableNum": 52,
+        "score": "2.0",
+        "soldNum": "1.6",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 13
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "hoodie",
+        "category": "women",
+        "price": "$36.00",
+        "description": "this is a women hoodie",
+        "color": ["red", "green"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 2,
+        "score": "3.6",
+        "soldNum": "123",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "jumper",
+        "category": "women",
+        "price": "$16.00",
+        "description": "this is a women jumper",
+        "color": ["green", "blue"],
+        "size": ["l", "xl"],
+        "availableNum": 1,
+        "score": "3.0",
+        "soldNum": "86",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "sleeveless",
+        "category": "women",
+        "price": "$30.00",
+        "description": "this is a women sleeveless",
+        "color": ["red", "green", "blue"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 20,
+        "score": "2.9",
+        "soldNum": "84",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 25
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "scarf",
+        "category": "women",
+        "price": "$13.00",
+        "description": "this is a red women scarf",
+        "color": ["red", "green", "blue"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 13,
+        "score": "3.9",
+        "soldNum": "140",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 5
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "coat",
+        "category": "women",
+        "price": "$123.00",
+        "description": "this is a purple women coat",
+        "color": ["red", "green", "blue", "orange"],
+        "size": ["xs", "s", "m", "l", "xl"],
+        "availableNum": 8,
+        "score": "4.6",
+        "soldNum": "594",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 5
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "crop top",
+        "category": "women",
+        "price": "$64.00",
+        "description": "this is a women crop top",
+        "color": ["black", "white"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 6,
+        "score": "3.8",
+        "soldNum": "781",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 10
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "frock",
+        "category": "women",
+        "price": "$89.50",
+        "description": "this is a women frock",
+        "color": ["red", "pink", "blue"],
+        "size": ["s", "l", "xl"],
+        "availableNum": 5,
+        "score": "4.1",
+        "soldNum": "431",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "pants",
+        "category": "women",
+        "price": "$16.70",
+        "description": "this is a women pants",
+        "color": ["red", "green", "purple", "black"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 6,
+        "score": "1.6",
+        "soldNum": "13",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "maxi",
+        "category": "women",
+        "price": "$36.00",
+        "description": "this is a women maxi",
+        "color": ["cyan", "green", "blue"],
+        "size": ["s", "m", "xl"],
+        "availableNum": 9,
+        "score": "4.2",
+        "soldNum": "432",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "jeans",
+        "category": "women",
+        "price": "$75.36",
+        "description": "this is a women jeans",
+        "color": ["red", "green", "blue"],
+        "size": ["m", "l", "xl"],
+        "availableNum": 9,
+        "score": "4.7",
+        "soldNum": "851",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 20
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "nightie",
+        "category": "women",
+        "price": "$15.00",
+        "description": "this is a women nightie",
+        "color": ["red", "green", "blue"],
+        "size": ["s", "xl"],
+        "availableNum": 5,
+        "score": "3.9",
+        "soldNum": "736",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "skirt",
+        "category": "women",
+        "price": "$35.00",
+        "description": "this is a women skirt",
+        "color": ["purple", "cyan", "blue"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 33,
+        "score": "3.3",
+        "soldNum": "31",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "sweater",
+        "category": "women",
+        "price": "$85.00",
+        "description": "this is a women sweater",
+        "color": ["red", "green", "blue"],
+        "size": ["s", "m", "l"],
+        "availableNum": 16,
+        "score": "4.0",
+        "soldNum": "536",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 40
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "blazer",
+        "category": "women",
+        "price": "$95.00",
+        "description": "this is a women blazer",
+        "color": ["red", "green", "blue"],
+        "size": ["l", "xl"],
+        "availableNum": 15,
+        "score": "3.6",
+        "soldNum": "96",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 7
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "pants",
+        "category": "women",
+        "price": "$15.00",
+        "description": "this is a women pants",
+        "color": ["red", "green", "blue", "green"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 12,
+        "score": "4.1",
+        "soldNum": "350",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 3
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "camisole",
+        "category": "women",
+        "price": "$35.00",
+        "description": "this is a women camisole",
+        "color": ["red", "green", "blue"],
+        "size": ["s", "m"],
+        "availableNum": 17,
+        "score": "3.3",
+        "soldNum": "25",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "dungaree",
+        "category": "women",
+        "price": "$65.00",
+        "description": "this is a women dungaree",
+        "color": ["black", "orange", "blue"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 16,
+        "score": "1.3",
+        "soldNum": "120",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 3
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "tank top",
+        "category": "women",
+        "price": "$35.00",
+        "description": "this is a women tank top",
+        "color": ["red", "purple", "brown"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 23,
+        "score": "3.4",
+        "soldNum": "4.7",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 1
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    {
+        "title": "shorts",
+        "category": "women",
+        "price": "$8.00",
+        "description": "this is a women shorts",
+        "color": ["red", "blue", "black", "white"],
+        "size": ["s", "m", "l"],
+        "availableNum": 26,
+        "score": "3.4",
+        "soldNum": "78",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg"
+    },
+    // mens
+    {
+        "title": "sweater",
+        "category": "man",
+        "price": "$18.00",
+        "description": "this is a man sweater",
+        "color": ["red", "green"],
+        "size": ["s", "m", "l"],
+        "availableNum": 10,
+        "score": "4.6",
+        "soldNum": "52",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "hoodie",
+        "category": "man",
+        "price": "$254.00",
+        "description": "this is a man hoodie",
+        "color": ["red", "green", "yellow"],
+        "size": ["s", "m", "l"],
+        "availableNum": 20,
+        "score": "3.5",
+        "soldNum": "12",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 10
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "shirt",
+        "category": "man",
+        "price": "$56.00",
+        "description": "this is a man shirt",
+        "color": ["red", "green", "blue", "pink"],
+        "size": ["m", "l"],
+        "availableNum": 15,
+        "score": "3.8",
+        "soldNum": "18",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "jumper",
+        "category": "man",
+        "price": "$54.00",
+        "description": "this is a man jumper",
+        "color": ["red", "green", "yellow", "brown", "pink"],
+        "size": ["xs", "s", "m", "l"],
+        "availableNum": 12,
+        "score": "3.5",
+        "soldNum": "34",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "cardigan",
+        "category": "man",
+        "price": "$36.55",
+        "description": "this is a man cardigan",
+        "color": ["purple"],
+        "size": ["s", "m", "l"],
+        "availableNum": 23,
+        "score": "1.5",
+        "soldNum": "2",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 10
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "polo shirt",
+        "category": "man",
+        "price": "$36.00",
+        "description": "this is a man polo shirt",
+        "color": ["red", "yellow"],
+        "size": ["s", "l"],
+        "availableNum": 2,
+        "score": "3.6",
+        "soldNum": "1864",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 5
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "pullover",
+        "category": "man",
+        "price": "$85.00",
+        "description": "this is a man pullover",
+        "color": ["red", "yellow", "black", "white"],
+        "size": ["m", "l"],
+        "availableNum": 13,
+        "score": "3.1",
+        "soldNum": "162",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 15
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "T-shirt",
+        "category": "man",
+        "price": "$50.40",
+        "description": "this is a man T-shirt",
+        "color": ["red", "green", "blue", "black", "white"],
+        "size": ["s", "m", "l", "xl"],
+        "availableNum": 36,
+        "score": "4.3",
+        "soldNum": "164",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 6
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "overalls",
+        "category": "man",
+        "price": "$136.40",
+        "description": "this is a man overalls",
+        "color": ["black", "green", "blue"],
+        "size": ["s", "m", "l"],
+        "availableNum": 24,
+        "score": "3.6",
+        "soldNum": "34",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 22
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "pyjamas",
+        "category": "man",
+        "price": "$13.40",
+        "description": "this is a man pyjamas",
+        "color": ["black", "white"],
+        "size": ["s", "m"],
+        "availableNum": 34,
+        "score": "2.4",
+        "soldNum": "13",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "singlet",
+        "category": "man",
+        "price": "$20.40",
+        "description": "this is a man singlet",
+        "color": ["black", "green", "blue", "pink", "purple"],
+        "size": ["m", "l"],
+        "availableNum": 14,
+        "score": "3.0",
+        "soldNum": "125",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "sleeveless",
+        "category": "man",
+        "price": "$23.60",
+        "description": "this is a man sleeveless",
+        "color": ["blue"],
+        "size": ["xs", "s", "m", "l"],
+        "availableNum": 100,
+        "score": "2.6",
+        "soldNum": "263",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "coat",
+        "category": "man",
+        "price": "$356.00",
+        "description": "this is a man coat",
+        "color": ["black"],
+        "size": ["l", "lg"],
+        "availableNum": 2,
+        "score": "4.5",
+        "soldNum": "10",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 6
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "trench coat",
+        "category": "man",
+        "price": "$200.00",
+        "description": "this is a man trench coat",
+        "color": ["black", "gray", "white"],
+        "size": ["l"],
+        "availableNum": 3,
+        "score": "4.8",
+        "soldNum": "16",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "tie",
+        "category": "man",
+        "price": "$60.84",
+        "description": "this is a man tie",
+        "color": ["black", "green", "blue", "yellow", "red"],
+        "size": ["11.5 in", "13.5 in", "15.5 in"],
+        "availableNum": 10,
+        "score": "2.8",
+        "soldNum": "43",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    {
+        "title": "waist coat",
+        "category": "man",
+        "price": "$98.40",
+        "description": "this is a man waist coat",
+        "color": ["black"],
+        "size": ["s", "m", "l"],
+        "availableNum": 4,
+        "score": "4.5",
+        "soldNum": "132",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 5
+        },
+        "imgPath": "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg"
+    },
+    // baby
+    {
+        "title": "pant",
+        "category": "baby",
+        "price": "$50.00",
+        "description": "this is a man pant",
+        "color": ["white", "red", "yellow"],
+        "size": ["s", "m"],
+        "availableNum": 10,
+        "score": "4.5",
+        "soldNum": "150",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    },
+    {
+        "title": "tight",
+        "category": "baby",
+        "price": "$80.00",
+        "description": "this is a man tight",
+        "color": ["white", "red"],
+        "size": ["s", "m", "l"],
+        "availableNum": 30,
+        "score": "3.6",
+        "soldNum": "15",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    },
+    {
+        "title": "suit",
+        "category": "baby",
+        "price": "$84.00",
+        "description": "this is a man suit",
+        "color": ["purple", "red", "yellow"],
+        "size": ["s", "m", "l"],
+        "availableNum": 24,
+        "score": "3.6",
+        "soldNum": "24",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    },
+    {
+        "title": "shirt",
+        "category": "baby",
+        "price": "$34.00",
+        "description": "this is a man shirt",
+        "color": ["white", "red"],
+        "size": ["s", "m", "l"],
+        "availableNum": 21,
+        "score": "3.4",
+        "soldNum": "156",
+        "discount": {
+            "hasDiscount": true,
+            "discountValue": 10
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    },
+    {
+        "title": "ramper",
+        "category": "baby",
+        "price": "$63.00",
+        "description": "this is a man ramper",
+        "color": ["white", "red", "blue"],
+        "size": ["s"],
+        "availableNum": 2,
+        "score": "3.0",
+        "soldNum": "143",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    },
+    {
+        "title": "sweater",
+        "category": "baby",
+        "price": "$78.00",
+        "description": "this is a man sweater",
+        "color": ["white", "red", "yellow", "purple", "blue"],
+        "size": ["s", "m"],
+        "availableNum": 6,
+        "score": "2.3",
+        "soldNum": "36",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    },
+    {
+        "title": "sleeping bag",
+        "category": "baby",
+        "price": "$100.00",
+        "description": "this is a man sleeping bag",
+        "color": ["white", "purple", "blue"],
+        "size": ["s", "m", "l", "lg"],
+        "availableNum": 1,
+        "score": "4.3",
+        "soldNum": "136",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    },
+    {
+        "title": "hat",
+        "category": "baby",
+        "price": "$35.00",
+        "description": "this is a man hat",
+        "color": ["purple", "blue"],
+        "size": ["s", "m", "l", "lg"],
+        "availableNum": 3,
+        "score": "4.5",
+        "soldNum": "63",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    },
+    {
+        "title": "sock",
+        "category": "baby",
+        "price": "$10.00",
+        "description": "this is a man sock",
+        "color": ["white", "purple", "blue"],
+        "size": ["m", "l"],
+        "availableNum": 4,
+        "score": "4.3",
+        "soldNum": "53",
+        "discount": {
+            "hasDiscount": false,
+            "discountValue": 0
+        },
+        "imgPath": "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382"
+    }
+]
