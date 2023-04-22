@@ -1,3 +1,6 @@
+// this the demo for my database i create fake data for women, man, and baby clothes and i put them in this json file
+// but i wont use it I am using firebase for giving values because I put these data in my firebase db
+
 [
     {
         "title": "T-shirt",
