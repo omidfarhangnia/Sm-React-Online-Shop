@@ -12,7 +12,7 @@ import { RiInstagramFill } from "react-icons/ri";
 
 const Header = () => {
   return (
-    <header className="font-spartan">
+    <header className="font-spartan mb-[100px]">
       <TopNav />
       <Navbar />
     </header>
