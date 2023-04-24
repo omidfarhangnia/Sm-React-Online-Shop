@@ -8,7 +8,7 @@ const CategoriesDemo = ({ categoryName }) => {
   const filteredItem = items.filter((item) => item.category === categoryName);
 
   return (
-    <div className="flex flex-col my-10 px-10">
+    <div className="flex flex-col items-center my-10 px-10">
       <div className="w-[100%] mb-10 flex justify-between items-center">
         <h1 className="text-3xl font-bold mr-10 md:ml-10 lg:text-5xl font-spartan uppercase text-black/80">
           {categoryName}
@@ -16,7 +16,7 @@ const CategoriesDemo = ({ categoryName }) => {
 
         <div className="h-[3px] w-full bg-black/30"></div>
       </div>
-      <div className="flex flex-wrap justify-around gap-[50px]">
+      <div className="flex flex-wrap justify-around gap-[50px] my-24 transition-all">
         {isShowMore
           ? filteredItem.map((item, index) => {
               return <ItemsCard key={index} item={item} />;
@@ -32,7 +32,7 @@ const CategoriesDemo = ({ categoryName }) => {
 
       {isShowMore ? (
         <button
-          className="w-[100%] bg-green-500"
+          className="min-w-[200px] w-[40%] max-w-[450px] bg-black/70 text-white p-2 md:p-5 rounded-full text-[20px] md:text-2xl xl:text-3xl"
           onClick={() => {
             setIsShowMore(false);
           }}
@@ -41,7 +41,7 @@ const CategoriesDemo = ({ categoryName }) => {
         </button>
       ) : (
         <button
-          className="w-[100%] bg-green-500"
+          className="min-w-[200px] w-[40%] max-w-[450px] bg-black/70 text-white p-2 md:p-5 rounded-full text-[20px] md:text-2xl xl:text-3xl"
           onClick={() => {
             setIsShowMore(true);
           }}

@@ -2,7 +2,6 @@ import React from "react";
 import {IoIosStar, IoIosStarHalf, IoIosStarOutline} from "react-icons/io"
 
 const ItemsCard = ({ item }) => {
-  console.log(item.score);
   return (
     <div className="min-w-[300px] w-[30%] max-w-[350px] flex flex-col mx-auto select-none relative p-5">
       <div className="w-[104%] h-[104%] bg-gradient-to-br from-[#000000] to-[#434343] absolute top-[-2%] left-[-2%] rounded-md opacity-90 blur-[1px]"></div>
@@ -15,7 +14,7 @@ const ItemsCard = ({ item }) => {
         <h5 className="text-[30px] capitalize font-spartan my-3">
           {item.title}
         </h5>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <div className="text-[20px] font-bold">{item.price}</div>
           <ItemStars score={item.score} />
         </div>
@@ -27,9 +26,21 @@ const ItemsCard = ({ item }) => {
 export default ItemsCard;
 
 function ItemStars({ score }) {
+  let stars = [], majorNum = Number(score.match(/^\d/gm)[0]), size = 20;
 
-  // IoIosStarOutline IoIosStar IoIosStarHalf
+  for(var i = 1; i <= 5; i++){
+    if(i <= majorNum){
+      stars.push(<IoIosStar size={size}/>);
+    }else if(i === majorNum + 1){
+      stars.push(<IoIosStarHalf size={size}/>);
+    }else{
+      stars.push(<IoIosStarOutline size={size}/>);
+    }
+  }
+
   return(
-
+    <div className="flex w-[50%] p-3 justify-between items-center">
+      {stars.map((item, index) => <span key={index}>{item}</span>)}
+    </div>
   );
 }
