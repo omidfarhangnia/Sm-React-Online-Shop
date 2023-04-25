@@ -31,51 +31,32 @@ const Navbar = () => {
       </div>
       <ul className="hidden md:flex justify-center items-center gap-4 lg:gap-6">
         <li>
+          <Link to={"/WomenPage"}>
+            <a className="capitalize lg:text-[19px] text-[#121212] font-light">
+              women
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link to={"/MenPage"}>
+            <a className="capitalize lg:text-[19px] text-[#121212] font-light">
+              men
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link to={"/BabyPage"}>
+            <a className="capitalize lg:text-[19px] text-[#121212] font-light">
+              baby
+            </a>
+          </Link>
+        </li>
+        <li>
           <a
             href="#"
             className="capitalize lg:text-[19px] text-[#121212] font-light"
           >
             About Us
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="capitalize lg:text-[19px]  text-[#121212] font-light"
-          >
-            Clothes
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="capitalize lg:text-[19px] text-[#121212] font-light"
-          >
-            Electronics
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="capitalize lg:text-[19px] text-[#121212] font-light"
-          >
-            Furniture
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="capitalize lg:text-[19px] text-[#121212] font-light"
-          >
-            Shoes
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="capitalize lg:text-[19px] text-[#121212] font-light"
-          >
-            Others
           </a>
         </li>
       </ul>

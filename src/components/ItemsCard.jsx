@@ -14,7 +14,7 @@ const ItemsCard = ({ item }) => {
         {item.discount.hasDiscount ? (
           <span
             after={item.discount.discountValue + "%"}
-            className={`w-[100%] h-[70%] after:content-[attr(after)] after:absolute after:top-[10px] after:right-[-30px] after:w-[30%] after:text-[20px] after:text-center after:rotate-[45deg] after:bg-red-600 after:rounded-sm`}
+            className={`w-[100%] h-[70%] after:content-[attr(after)] after:absolute after:top-[10px] after:right-[-20px] after:w-[30%] after:text-[20px] after:text-center after:rotate-[45deg] after:bg-red-600 after:rounded-sm`}
           >
             <img
               className="object-cover object-top w-[100%] h-[100%]"
