@@ -3,30 +3,69 @@ import { GiveData } from "../context/AuthContext";
 import ItemsCard from "../components/ItemsCard";
 import { RxCross1 } from "react-icons/rx";
 import { RiFilter2Fill } from "react-icons/ri";
+import { givePriceData } from "../components/ItemsCard";
 
 const WomenPage = () => {
   const { items } = GiveData();
   const [isFiltered, setIsFiltered] = useState(false);
-  const filteredItem = items.filter((item) => item.category === "women");
   const [availableColors, setAvailableColors] = useState([]);
   const [filterValue, setFilterValue] = useState({
-    ordering: "bestSell",
+    ordering: "bestSold",
   });
-
-
-  console.log(filterValue.ordering)
+  const [pageItems, setPageItems] = useState([]);
 
   useEffect(() => {
+    setPageItems(items.filter((item) => item.category === "women"));
     let colors = new Set();
-    for (var i = 0; i < filteredItem.length; i++) {
-      for (var j = 0; j < filteredItem[i].color.length; j++) {
-        if (!colors.has(filteredItem[i].color[j])) {
-          colors.add(filteredItem[i].color[j]);
+    for (var i = 0; i < pageItems.length; i++) {
+      for (var j = 0; j < pageItems[i].color.length; j++) {
+        if (!colors.has(pageItems[i].color[j])) {
+          colors.add(pageItems[i].color[j]);
         }
       }
     }
     setAvailableColors(Array.from(colors));
   }, [items]);
+
+  useEffect(() => {
+    let Ordered;
+    if(filterValue.ordering === "bestSold"){
+      Ordered = pageItems.sort(
+        (a, b) => Number(b.soldNum) - Number(a.soldNum)
+      );
+    }else if(filterValue.ordering === "bestDiscount"){
+      Ordered = pageItems.sort(
+        (a, b) =>
+          Number(b.discount.discountValue) - Number(a.discount.discountValue)
+      );
+    }else if(filterValue.ordering === "cheapestPrice"){
+        Ordered = pageItems.sort((a, b) => {
+          let APriceData = givePriceData(a.price, a.discount.discountValue);
+          let BPriceData = givePriceData(b.price, b.discount.discountValue);
+
+          if (APriceData.dollar > BPriceData.dollar) {
+            return 1;
+          }
+
+          if (APriceData.dollar < BPriceData.dollar) {
+            return -1;
+          }
+
+          if (APriceData.dollar === BPriceData.dollar) {
+            if (APriceData.centWithoutLeading > BPriceData.centWithoutLeading) {
+              return 1;
+            }
+            if (APriceData.centWithoutLeading < BPriceData.centWithoutLeading) {
+              return -1;
+            }
+
+            return 0;
+          }
+        });
+    }
+
+    setPageItems(Ordered);
+  }, [filterValue, items, pageItems]);
 
   return (
     <div>
@@ -37,12 +76,14 @@ const WomenPage = () => {
           Filter
         </div>
         <select
-          onChange={(e) => setFilterValue({
-            ...filterValue,
-            ordering: e.target.value
-          })}
+          onChange={(e) =>
+            setFilterValue({
+              ...filterValue,
+              ordering: e.target.value,
+            })
+          }
         >
-          <option value="bestSell">best sellers</option>
+          <option value="bestSold">best sellers</option>
           <option value="bestDiscount">higher discount</option>
           <option value="cheapestPrice">cheapest</option>
           <option value="HighestPrice">most expensive</option>
@@ -91,7 +132,7 @@ const WomenPage = () => {
         </form>
       )}
       <div className="flex flex-wrap justify-around gap-[50px] my-24 transition-all">
-        {filteredItem.map((item, index) => {
+        {pageItems.map((item, index) => {
           return <ItemsCard key={index} item={item} />;
         })}
       </div>

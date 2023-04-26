@@ -2,13 +2,10 @@ import React from "react";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 
 const ItemsCard = ({ item }) => {
-  let priceDollar = item.price.match(/((?<=\$)\d+)/gm)[0], priceCent = item.price.match(/((?<=\.)\d+)/gm)[0];
-  let priceWithDiscount = Math.round(Number(`${priceDollar}${priceCent}`) - (Number(`${priceDollar}${priceCent}`) / 100 * item.discount.discountValue));
-  priceWithDiscount = String(priceWithDiscount);
-  let priceWithDiscountDollar = priceWithDiscount.match(/\d+(?=\d{2})/g)[0], priceWithDiscountCent = priceWithDiscount.match(/\d{2}$/g)[0];
+  const priceData =  givePriceData(item.price, item.discount.discountValue);
 
   return (
-    <div className="min-w-[300px] w-[30%] max-w-[350px] flex flex-col mx-auto select-none relative p-5">
+    <div className="min-w-[300px] w-[30%] max-w-[350px] flex flex-col mx-auto select-none relative p-5" title={item.soldNum + " === " + item.discount.discountValue}>
       <div className="w-[104%] h-[104%] bg-gradient-to-br from-[#000000] to-[#434343] absolute top-[-2%] left-[-2%] rounded-md opacity-90 blur-[1px]"></div>
       <div className="relative text-white flex flex-col justify-around">
         {item.discount.hasDiscount ? (
@@ -36,7 +33,7 @@ const ItemsCard = ({ item }) => {
           {item.discount.hasDiscount ? (
             <span className="flex items-center gap-[10px]">
               <div className="text-[16px] line-through decoration-red-500 decoration-[2px]">{item.price}</div>
-              <div className="text-[20px] font-bold ">{`$${priceWithDiscountDollar}.${priceWithDiscountCent}`}</div>
+              <div className="text-[20px] font-bold ">{`$${priceData.dollar}.${priceData.cent}`}</div>
             </span>
             ) : (
             <div className="text-[20px] font-bold">{item.price}</div>
@@ -72,4 +69,17 @@ function ItemStars({ score }) {
       ))}
     </div>
   );
+}
+
+export function givePriceData(price, discountValue) {
+  let priceDollar = price.match(/((?<=\$)\d+)/gm)[0], priceCent = price.match(/((?<=\.)\d+)/gm)[0];
+  let priceWithDiscount = Math.round(Number(`${priceDollar}${priceCent}`) - (Number(`${priceDollar}${priceCent}`) / 100 * discountValue));
+  priceWithDiscount = String(priceWithDiscount);
+  let priceWithDiscountDollar = priceWithDiscount.match(/\d+(?=\d{2})/g)[0], priceWithDiscountCent = priceWithDiscount.match(/\d{2}$/g)[0];
+
+  return {
+    dollar: priceWithDiscountDollar,
+    cent: priceWithDiscountCent,
+    centWithoutLeading: parseInt(priceWithDiscountCent, 10),
+  }
 }
