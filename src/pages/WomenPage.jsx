@@ -11,61 +11,124 @@ const WomenPage = () => {
   const [availableColors, setAvailableColors] = useState([]);
   const [filterValue, setFilterValue] = useState({
     ordering: "bestSold",
+    filter: {
+      size: {
+        Xl: true,
+        L: true,
+        M: true,
+        S: true,
+        Sx: true,
+      },
+      price: {
+        start: 0,
+        end: Infinity,
+      },
+      color: {}
+    },
   });
   const [pageItems, setPageItems] = useState([]);
 
   useEffect(() => {
     setPageItems(items.filter((item) => item.category === "women"));
+
+    // giving values for filtering colors
     let colors = new Set();
+    let colorsData = {}
     for (var i = 0; i < pageItems.length; i++) {
       for (var j = 0; j < pageItems[i].color.length; j++) {
         if (!colors.has(pageItems[i].color[j])) {
           colors.add(pageItems[i].color[j]);
+          colorsData[pageItems[i].color[j]] = true;
         }
       }
     }
+    
+    // making an object for filter data
+    setFilterValue({
+      ...filterValue,
+      filter: {
+        ...filterValue.filter,
+        color: colorsData
+      }
+    })
     setAvailableColors(Array.from(colors));
   }, [items]);
 
-  useEffect(() => {
-    let Ordered;
-    if(filterValue.ordering === "bestSold"){
-      Ordered = pageItems.sort(
-        (a, b) => Number(b.soldNum) - Number(a.soldNum)
-      );
-    }else if(filterValue.ordering === "bestDiscount"){
-      Ordered = pageItems.sort(
-        (a, b) =>
-          Number(b.discount.discountValue) - Number(a.discount.discountValue)
-      );
-    }else if(filterValue.ordering === "cheapestPrice"){
-        Ordered = pageItems.sort((a, b) => {
-          let APriceData = givePriceData(a.price, a.discount.discountValue);
-          let BPriceData = givePriceData(b.price, b.discount.discountValue);
+  // function handleSortItems(status) {
+  //   let Ordered;
+  //   if (status === "bestSold") {
+  //     Ordered = pageItems.sort((a, b) => b.soldNum - a.soldNum);
+  //   } else if (status === "bestDiscount") {
+  //     Ordered = pageItems.sort(
+  //       (a, b) =>
+  //         Number(b.discount.discountValue) - Number(a.discount.discountValue)
+  //     );
+  //   } else if (status === "cheapestPrice") {
+  //     Ordered = pageItems.sort((a, b) => {
+  //       let APriceData = givePriceData(a.price, a.discount.discountValue);
+  //       let BPriceData = givePriceData(b.price, b.discount.discountValue);
 
-          if (APriceData.dollar > BPriceData.dollar) {
-            return 1;
-          }
+  //       if (APriceData.dollar > BPriceData.dollar) {
+  //         return 1;
+  //       }
 
-          if (APriceData.dollar < BPriceData.dollar) {
-            return -1;
-          }
+  //       if (APriceData.dollar < BPriceData.dollar) {
+  //         return -1;
+  //       }
 
-          if (APriceData.dollar === BPriceData.dollar) {
-            if (APriceData.centWithoutLeading > BPriceData.centWithoutLeading) {
-              return 1;
-            }
-            if (APriceData.centWithoutLeading < BPriceData.centWithoutLeading) {
-              return -1;
-            }
+  //       if (APriceData.dollar === BPriceData.dollar) {
+  //         if (APriceData.centWithoutLeading > BPriceData.centWithoutLeading) {
+  //           return 1;
+  //         }
+  //         if (APriceData.centWithoutLeading < BPriceData.centWithoutLeading) {
+  //           return -1;
+  //         }
 
-            return 0;
-          }
-        });
-    }
+  //         return 0;
+  //       }
+  //     });
+  //   }
+  //   setPageItems(Ordered);
+  // }
 
-    setPageItems(Ordered);
-  }, [filterValue, items, pageItems]);
+  function handleSortItems(status) {
+    setFilterValue({
+      ...filterValue,
+      ordering: status,
+    });
+  }
+
+  function handleChangeSizeFilter(e) {
+    setFilterValue({
+      ...filterValue,
+      filter: {
+        ...filterValue.filter,
+        size: {
+          ...filterValue.filter.size,
+          [e.target.name]: !filterValue.filter.size[e.target.name],
+        },
+      },
+    });
+  }
+
+  function handleChangePriceFilter(e) {
+    const startPrice = e.target.getAttribute("startPrice");
+    const endPrice = e.target.getAttribute("endPrice");
+    setFilterValue({
+      ...filterValue,
+      filter: {
+        ...filterValue.filter,
+        price: {
+          start: startPrice,
+          end: endPrice,
+        },
+      },
+    });
+  }
+
+  function handleChangeColorFilter(e) {
+    
+  }
 
   return (
     <div>
@@ -75,46 +138,112 @@ const WomenPage = () => {
           {isFiltered ? <RxCross1 /> : <RiFilter2Fill />}
           Filter
         </div>
-        <select
-          onChange={(e) =>
-            setFilterValue({
-              ...filterValue,
-              ordering: e.target.value,
-            })
-          }
-        >
+        <select onChange={(e) => handleSortItems(e.target.value)}>
           <option value="bestSold">best sellers</option>
           <option value="bestDiscount">higher discount</option>
           <option value="cheapestPrice">cheapest</option>
           <option value="HighestPrice">most expensive</option>
+          <option value="bestScore">best score</option>
         </select>
       </div>
       {isFiltered && (
         <form>
           <div>
-            <input type="checkbox" id="filter__size__XL" />
+            <input
+              checked={filterValue.filter.size.Xl}
+              name="Xl"
+              type="checkbox"
+              id="filter__size__XL"
+              onChange={handleChangeSizeFilter}
+            />
             <label for="filter__size__XL">XL</label>
-            <input type="checkbox" id="filter__size__L" />
+            <input
+              checked={filterValue.filter.size.L}
+              name="L"
+              type="checkbox"
+              id="filter__size__L"
+              onChange={handleChangeSizeFilter}
+            />
             <label for="filter__size__L">L</label>
-            <input type="checkbox" id="filter__size__M" />
+            <input
+              checked={filterValue.filter.size.M}
+              name="M"
+              type="checkbox"
+              id="filter__size__M"
+              onChange={handleChangeSizeFilter}
+            />
             <label for="filter__size__M">M</label>
-            <input type="checkbox" id="filter__size__S" />
+            <input
+              checked={filterValue.filter.size.S}
+              name="S"
+              type="checkbox"
+              id="filter__size__S"
+              onChange={handleChangeSizeFilter}
+            />
             <label for="filter__size__S">S</label>
-            <input type="checkbox" id="filter__size__XS" />
+            <input
+              checked={filterValue.filter.size.Sx}
+              name="Sx"
+              type="checkbox"
+              id="filter__size__XS"
+              onChange={handleChangeSizeFilter}
+            />
             <label for="filter__size__XS">XS</label>
           </div>
           <div>
-            <input type="radio" name="filterPrice" id="price__1200" />
+            <input
+              type="radio"
+              name="filterPrice"
+              id="price__1200"
+              startPrice={1200}
+              endPrice={Infinity}
+              onChange={handleChangePriceFilter}
+            />
             <label for="price__1200">$1200+</label>
-            <input type="radio" name="filterPrice" id="price__600__1200" />
+            <input
+              type="radio"
+              name="filterPrice"
+              id="price__600__1200"
+              startPrice={600}
+              endPrice={1200}
+              onChange={handleChangePriceFilter}
+            />
             <label for="price__600__1200">$600-$1200</label>
-            <input type="radio" name="filterPrice" id="price__300__600" />
+            <input
+              type="radio"
+              name="filterPrice"
+              id="price__300__600"
+              startPrice={300}
+              endPrice={600}
+              onChange={handleChangePriceFilter}
+            />
             <label for="price__300__600">$300-$600</label>
-            <input type="radio" name="filterPrice" id="price__150__300" />
+            <input
+              type="radio"
+              name="filterPrice"
+              id="price__150__300"
+              startPrice={150}
+              endPrice={300}
+              onChange={handleChangePriceFilter}
+            />
             <label for="price__150__300">$150-$300</label>
-            <input type="radio" name="filterPrice" id="price__50__150" />
+            <input
+              type="radio"
+              name="filterPrice"
+              id="price__50__150"
+              startPrice={50}
+              endPrice={150}
+              onChange={handleChangePriceFilter}
+            />
             <label for="price__50__150">$50-$150</label>
-            <input type="radio" name="filterPrice" id="price__7__50" />
+            <input
+              type="radio"
+              name="filterPrice"
+              id="price__7__50"
+              startPrice={7}
+              endPrice={50}
+              onChange={handleChangePriceFilter}
+            />
             <label for="price__7__50">$7-$50</label>
           </div>
           <div>
@@ -124,7 +253,7 @@ const WomenPage = () => {
                   style={{ background: color }}
                   className="w-[30px] h-[30px] inline-block rounded-full"
                 ></span>
-                <input type="checkbox" id={`filter__color__${color}`} />
+                <input type="checkbox" checked={true} onChange={handleChangeColorFilter} id={`filter__color__${color}`} />
                 <label for={`filter__color__${color}`}>{color}</label>
               </div>
             ))}
@@ -132,7 +261,7 @@ const WomenPage = () => {
         </form>
       )}
       <div className="flex flex-wrap justify-around gap-[50px] my-24 transition-all">
-        {pageItems.map((item, index) => {
+        {pageItems?.map((item, index) => {
           return <ItemsCard key={index} item={item} />;
         })}
       </div>
