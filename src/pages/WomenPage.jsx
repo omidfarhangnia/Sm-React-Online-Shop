@@ -23,34 +23,34 @@ const WomenPage = () => {
         start: 0,
         end: Infinity,
       },
-      color: {}
+      color: {},
     },
   });
   const [pageItems, setPageItems] = useState([]);
+  const filteredItems = items.filter((item) => item.category === "women");
 
   useEffect(() => {
-    setPageItems(items.filter((item) => item.category === "women"));
-
+    setPageItems(filteredItems);
     // giving values for filtering colors
     let colors = new Set();
-    let colorsData = {}
-    for (var i = 0; i < pageItems.length; i++) {
-      for (var j = 0; j < pageItems[i].color.length; j++) {
-        if (!colors.has(pageItems[i].color[j])) {
-          colors.add(pageItems[i].color[j]);
-          colorsData[pageItems[i].color[j]] = true;
+    let colorsData = {};
+    for (var i = 0; i < filteredItems.length; i++) {
+      for (var j = 0; j < filteredItems[i].color.length; j++) {
+        if (!colors.has(filteredItems[i].color[j])) {
+          colors.add(filteredItems[i].color[j]);
+          colorsData[filteredItems[i].color[j]] = true;
         }
       }
     }
-    
+
     // making an object for filter data
     setFilterValue({
       ...filterValue,
       filter: {
         ...filterValue.filter,
-        color: colorsData
-      }
-    })
+        color: colorsData,
+      },
+    });
     setAvailableColors(Array.from(colors));
   }, [items]);
 
@@ -126,8 +126,17 @@ const WomenPage = () => {
     });
   }
 
-  function handleChangeColorFilter(e) {
-    
+  function handleChangeColorFilter(e, selectStatus) {
+    setFilterValue({
+      ...filterValue,
+      filter: {
+        ...filterValue.filter,
+        color: {
+          ...filterValue.filter.color,
+          [e.target.name]: selectStatus
+        }
+      }
+    })
   }
 
   return (
@@ -248,25 +257,42 @@ const WomenPage = () => {
           </div>
           <div>
             {availableColors.map((color, index) => (
-              <div key={index} className="flex items-center gap-1">
-                <span
-                  style={{ background: color }}
-                  className="w-[30px] h-[30px] inline-block rounded-full"
-                ></span>
-                <input type="checkbox" checked={true} onChange={handleChangeColorFilter} id={`filter__color__${color}`} />
-                <label for={`filter__color__${color}`}>{color}</label>
-              </div>
+              <GiveColorsForFilter key={index} color={color} handleChangeColor={handleChangeColorFilter}/>
             ))}
           </div>
         </form>
       )}
       <div className="flex flex-wrap justify-around gap-[50px] my-24 transition-all">
-        {pageItems?.map((item, index) => {
+        {pageItems.map((item, index) => {
           return <ItemsCard key={index} item={item} />;
         })}
       </div>
     </div>
   );
 };
+
+function GiveColorsForFilter({ color, handleChangeColor }) {
+  const [isSelected, setIsSelected] = useState(true);
+
+  return (
+    <div className="flex items-center gap-1">
+      <span
+        style={{ background: color }}
+        className="w-[30px] h-[30px] inline-block rounded-full"
+      ></span>
+      <input
+        type="checkbox"
+        id={`filter__color__${color}`}
+        name={color}
+        checked={isSelected}
+        onChange={(e) => {
+          handleChangeColor(e, !isSelected);
+          setIsSelected(!isSelected)
+        }}
+      />
+      <label for={`filter__color__${color}`}>{color}</label>
+    </div>
+  );
+}
 
 export default WomenPage;
