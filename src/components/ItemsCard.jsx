@@ -78,7 +78,7 @@ export function givePriceData(price, discountValue) {
   let priceWithDiscountDollar = priceWithDiscount.match(/\d+(?=\d{2})/g)[0], priceWithDiscountCent = priceWithDiscount.match(/\d{2}$/g)[0];
 
   return {
-    dollar: priceWithDiscountDollar,
+    dollar: Number(priceWithDiscountDollar),
     cent: priceWithDiscountCent,
     centWithoutLeading: parseInt(priceWithDiscountCent, 10),
   }

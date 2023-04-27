@@ -54,49 +54,47 @@ const WomenPage = () => {
     setAvailableColors(Array.from(colors));
   }, [items]);
 
-  // function handleSortItems(status) {
-  //   let Ordered;
-  //   if (status === "bestSold") {
-  //     Ordered = pageItems.sort((a, b) => b.soldNum - a.soldNum);
-  //   } else if (status === "bestDiscount") {
-  //     Ordered = pageItems.sort(
-  //       (a, b) =>
-  //         Number(b.discount.discountValue) - Number(a.discount.discountValue)
-  //     );
-  //   } else if (status === "cheapestPrice") {
-  //     Ordered = pageItems.sort((a, b) => {
-  //       let APriceData = givePriceData(a.price, a.discount.discountValue);
-  //       let BPriceData = givePriceData(b.price, b.discount.discountValue);
-
-  //       if (APriceData.dollar > BPriceData.dollar) {
-  //         return 1;
-  //       }
-
-  //       if (APriceData.dollar < BPriceData.dollar) {
-  //         return -1;
-  //       }
-
-  //       if (APriceData.dollar === BPriceData.dollar) {
-  //         if (APriceData.centWithoutLeading > BPriceData.centWithoutLeading) {
-  //           return 1;
-  //         }
-  //         if (APriceData.centWithoutLeading < BPriceData.centWithoutLeading) {
-  //           return -1;
-  //         }
-
-  //         return 0;
-  //       }
-  //     });
-  //   }
-  //   setPageItems(Ordered);
-  // }
-
   function handleSortItems(status) {
-    setFilterValue({
-      ...filterValue,
-      ordering: status,
-    });
+    let items = [...pageItems];
+    if (status === "bestSold") {
+      setPageItems(items.sort((a, b) => Number(b.soldNum) - Number(a.soldNum)));
+    } else if (status === "bestDiscount") {
+      setPageItems(
+        items.sort(
+          (a, b) =>
+            Number(b.discount.discountValue) - Number(a.discount.discountValue)
+        )
+      );
+    }else if (status === "cheapestPrice") {
+      setPageItems(items.sort((a, b) => {
+        let APriceData = givePriceData(a.price, a.discount.discountValue);
+        let BPriceData = givePriceData(b.price, b.discount.discountValue);
+        
+        if (APriceData.dollar > BPriceData.dollar) {
+          return 1;
+        }
+        if (APriceData.dollar < BPriceData.dollar) {
+          return -1;
+        }
+        if (APriceData.dollar === BPriceData.dollar) {
+          if (APriceData.centWithoutLeading > BPriceData.centWithoutLeading) {
+            return 1;
+          }
+          if (APriceData.centWithoutLeading < BPriceData.centWithoutLeading) {
+            return -1;
+          }
+        }
+      }));
+    }
+    // setPageItems(Ordered);
   }
+
+  // function handleSortItems(status) {
+  //   setFilterValue({
+  //     ...filterValue,
+  //     ordering: status,
+  //   });
+  // }
 
   function handleChangeSizeFilter(e) {
     setFilterValue({
@@ -133,10 +131,10 @@ const WomenPage = () => {
         ...filterValue.filter,
         color: {
           ...filterValue.filter.color,
-          [e.target.name]: selectStatus
-        }
-      }
-    })
+          [e.target.name]: selectStatus,
+        },
+      },
+    });
   }
 
   return (
@@ -257,7 +255,11 @@ const WomenPage = () => {
           </div>
           <div>
             {availableColors.map((color, index) => (
-              <GiveColorsForFilter key={index} color={color} handleChangeColor={handleChangeColorFilter}/>
+              <GiveColorsForFilter
+                key={index}
+                color={color}
+                handleChangeColor={handleChangeColorFilter}
+              />
             ))}
           </div>
         </form>
@@ -287,7 +289,7 @@ function GiveColorsForFilter({ color, handleChangeColor }) {
         checked={isSelected}
         onChange={(e) => {
           handleChangeColor(e, !isSelected);
-          setIsSelected(!isSelected)
+          setIsSelected(!isSelected);
         }}
       />
       <label for={`filter__color__${color}`}>{color}</label>
