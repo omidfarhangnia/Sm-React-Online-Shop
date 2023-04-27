@@ -65,7 +65,7 @@ const WomenPage = () => {
             Number(b.discount.discountValue) - Number(a.discount.discountValue)
         )
       );
-    }else if (status === "cheapestPrice") {
+    } else if (status === "cheapestPrice") {
       setPageItems(items.sort((a, b) => {
         let APriceData = givePriceData(a.price, a.discount.discountValue);
         let BPriceData = givePriceData(b.price, b.discount.discountValue);
@@ -85,16 +85,48 @@ const WomenPage = () => {
           }
         }
       }));
-    }
-    // setPageItems(Ordered);
-  }
+    } else if (status === "HighestPrice") {
+      setPageItems(items.sort((a, b) => {
+        let APriceData = givePriceData(a.price, a.discount.discountValue);
+        let BPriceData = givePriceData(b.price, b.discount.discountValue);
+        
+        if (APriceData.dollar > BPriceData.dollar) {
+          return -1;
+        }
+        if (APriceData.dollar < BPriceData.dollar) {
+          return 1;
+        }
+        if (APriceData.dollar === BPriceData.dollar) {
+          if (APriceData.centWithoutLeading > BPriceData.centWithoutLeading) {
+            return -1;
+          }
+          if (APriceData.centWithoutLeading < BPriceData.centWithoutLeading) {
+            return 1;
+          }
+        }
+      }));
+    } else if (status === "bestScore") {
+      setPageItems(items.sort((a, b) => {
+        const AScore = giveScore(a.score);
+        const BScore = giveScore(b.score);
 
-  // function handleSortItems(status) {
-  //   setFilterValue({
-  //     ...filterValue,
-  //     ordering: status,
-  //   });
-  // }
+        if (AScore.major > BScore.major) {
+          return -1;
+        }
+        if (AScore.major < BScore.major) {
+          return 1;
+        }
+        if (AScore.major === BScore.major) {
+          if (AScore.minor > BScore.minor) {
+            return -1;
+          }
+          if (AScore.minor < BScore.minor) {
+            return 1;
+          }
+        }
+      }))
+    }
+  }
 
   function handleChangeSizeFilter(e) {
     setFilterValue({
@@ -295,6 +327,15 @@ function GiveColorsForFilter({ color, handleChangeColor }) {
       <label for={`filter__color__${color}`}>{color}</label>
     </div>
   );
+}
+
+function giveScore(score) {
+  let major = score.match(/\d(?=\.)/g)[0];
+  let minor = score.match(/(?<=\.)\d/g)[0];
+  return {
+    major: Number(major),
+    minor: Number(minor)
+  }
 }
 
 export default WomenPage;
