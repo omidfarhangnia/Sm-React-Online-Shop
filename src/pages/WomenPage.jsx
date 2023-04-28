@@ -192,13 +192,21 @@ const WomenPage = () => {
         handleSortItems("bestSold");
       }}
     >
-      <div>
-        <h1>Women</h1>
-        <div className="flex" onClick={() => setIsFiltered(!isFiltered)}>
+      <div className="flex flex-wrap justify-between px-5 md:px-10">
+        <h1 className="text-center font-bold font-spartan text-4xl uppercase md:text-5xl py-5 mb-5 w-full">
+          Women
+        </h1>
+        <div
+          className="flex text-[19px] gap-2 items-center"
+          onClick={() => setIsFiltered(!isFiltered)}
+        >
           {isFiltered ? <RxCross1 /> : <RiFilter2Fill />}
           Filter
         </div>
-        <select onChange={(e) => handleSortItems(e.target.value)}>
+        <select
+          className="text-[19px]"
+          onChange={(e) => handleSortItems(e.target.value)}
+        >
           <option value="bestSold">best sellers</option>
           <option value="bestDiscount">higher discount</option>
           <option value="cheapestPrice">cheapest</option>
@@ -207,106 +215,138 @@ const WomenPage = () => {
         </select>
       </div>
       {isFiltered && (
-        <form>
-          <div>
-            <input
-              checked={filterValue.size.Xl}
-              name="Xl"
-              type="checkbox"
-              id="filter__size__XL"
-              onChange={handleChangeSizeFilter}
-            />
-            <label htmlFor="filter__size__XL">XL</label>
-            <input
-              checked={filterValue.size.L}
-              name="L"
-              type="checkbox"
-              id="filter__size__L"
-              onChange={handleChangeSizeFilter}
-            />
-            <label htmlFor="filter__size__L">L</label>
-            <input
-              checked={filterValue.size.M}
-              name="M"
-              type="checkbox"
-              id="filter__size__M"
-              onChange={handleChangeSizeFilter}
-            />
-            <label htmlFor="filter__size__M">M</label>
-            <input
-              checked={filterValue.size.S}
-              name="S"
-              type="checkbox"
-              id="filter__size__S"
-              onChange={handleChangeSizeFilter}
-            />
-            <label htmlFor="filter__size__S">S</label>
-            <input
-              checked={filterValue.size.Sx}
-              name="Sx"
-              type="checkbox"
-              id="filter__size__XS"
-              onChange={handleChangeSizeFilter}
-            />
-            <label htmlFor="filter__size__XS">XS</label>
+        <form className="flex flex-col gap-5 p-5">
+          <div className="flex gap-3 pb-4 border-b-2 border-b-black border-b-solid">
+            <span>
+              <input
+                checked={filterValue.size.Xl}
+                name="Xl"
+                type="checkbox"
+                id="filter__size__XL"
+                onChange={handleChangeSizeFilter}
+              />
+              <label htmlFor="filter__size__XL" className="ml-1">
+                XL
+              </label>
+            </span>
+            <span>
+              <input
+                checked={filterValue.size.L}
+                name="L"
+                type="checkbox"
+                id="filter__size__L"
+                onChange={handleChangeSizeFilter}
+              />
+              <label htmlFor="filter__size__L" className="ml-1">
+                L
+              </label>
+            </span>
+            <span>
+              <input
+                checked={filterValue.size.M}
+                name="M"
+                type="checkbox"
+                id="filter__size__M"
+                onChange={handleChangeSizeFilter}
+              />
+              <label htmlFor="filter__size__M" className="ml-1">
+                M
+              </label>
+            </span>
+            <span>
+              <input
+                checked={filterValue.size.S}
+                name="S"
+                type="checkbox"
+                id="filter__size__S"
+                onChange={handleChangeSizeFilter}
+              />
+              <label htmlFor="filter__size__S" className="ml-1">
+                S
+              </label>
+            </span>
+            <span>
+              <input
+                checked={filterValue.size.Sx}
+                name="Sx"
+                type="checkbox"
+                id="filter__size__XS"
+                onChange={handleChangeSizeFilter}
+              />
+              <label htmlFor="filter__size__XS" className="ml-1">
+                XS
+              </label>
+            </span>
           </div>
-          <div>
-            <input
-              type="radio"
-              name="filterPrice"
-              id="price__1200"
-              startprice={1200}
-              endprice={Infinity}
-              onChange={handleChangePriceFilter}
-            />
-            <label htmlFor="price__1200">$1200+</label>
-            <input
-              type="radio"
-              name="filterPrice"
-              id="price__600__1200"
-              startprice={600}
-              endprice={1200}
-              onChange={handleChangePriceFilter}
-            />
-            <label htmlFor="price__600__1200">$600-$1200</label>
-            <input
-              type="radio"
-              name="filterPrice"
-              id="price__300__600"
-              startprice={300}
-              endprice={600}
-              onChange={handleChangePriceFilter}
-            />
-            <label htmlFor="price__300__600">$300-$600</label>
-            <input
-              type="radio"
-              name="filterPrice"
-              id="price__150__300"
-              startprice={150}
-              endprice={300}
-              onChange={handleChangePriceFilter}
-            />
-            <label htmlFor="price__150__300">$150-$300</label>
-            <input
-              type="radio"
-              name="filterPrice"
-              id="price__50__150"
-              startprice={50}
-              endprice={150}
-              onChange={handleChangePriceFilter}
-            />
-            <label htmlFor="price__50__150">$50-$150</label>
-            <input
-              type="radio"
-              name="filterPrice"
-              id="price__7__50"
-              startprice={7}
-              endprice={50}
-              onChange={handleChangePriceFilter}
-            />
-            <label htmlFor="price__7__50">$7-$50</label>
+          <div className="flex flex-wrap justify-between gap-5 pb-4 border-b-2 border-b-black border-b-solid">
+            <span>
+              <input
+                type="radio"
+                name="filterPrice"
+                id="price__1200"
+                startprice={1200}
+                endprice={Infinity}
+                onChange={handleChangePriceFilter}
+              />
+              <label className="font-spartan ml-1" htmlFor="price__1200">$1200+</label>
+            </span>
+            <span>
+              <input
+                type="radio"
+                name="filterPrice"
+                id="price__600__1200"
+                startprice={600}
+                endprice={1200}
+                onChange={handleChangePriceFilter}
+              />
+              <label className="font-spartan ml-1" htmlFor="price__600__1200">$600-$1200</label>
+            </span>
+            <span>
+              <input
+                type="radio"
+                name="filterPrice"
+                id="price__300__600"
+                startprice={300}
+                endprice={600}
+                onChange={handleChangePriceFilter}
+              />
+              <label className="font-spartan ml-1" htmlFor="price__300__600">$300-$600</label>
+            </span>
+            <span>
+              <input
+                type="radio"
+                name="filterPrice"
+                id="price__150__300"
+                startprice={150}
+                endprice={300}
+                onChange={handleChangePriceFilter}
+              />
+              <label className="font-spartan ml-1" htmlFor="price__150__300">$150-$300</label>
+            </span>
+            <span>
+              <input
+                type="radio"
+                name="filterPrice"
+                id="price__50__150"
+                startprice={50}
+                endprice={150}
+                onChange={handleChangePriceFilter}
+              />
+              <label className="font-spartan ml-1" htmlFor="price__50__150">$50-$150</label>
+            </span>
+            <span>
+              <input
+                type="radio"
+                name="filterPrice"
+                id="price__7__50"
+                startprice={7}
+                endprice={50}
+                onChange={handleChangePriceFilter}
+              />
+              <label className="font-spartan ml-1" htmlFor="price__7__50">$7-$50</label>
+            </span>
           </div>
-          <div>
+          <div className="flex flex-wrap justify-between gap-5">
             {availableColors.map((color, index) => (
               <GiveColorsForFilter
                 key={index}
@@ -330,22 +370,23 @@ function GiveColorsForFilter({ color, handleChangeColor }) {
   const [isSelected, setIsSelected] = useState(true);
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 select-none">
       <span
         style={{ background: color }}
-        className="w-[30px] h-[30px] inline-block rounded-full"
+        className="w-[30px] h-[30px] inline-block rounded-full border-solid border-[1px] border-black"
       ></span>
       <input
         type="checkbox"
         id={`filter__color__${color}`}
         name={color}
         checked={isSelected}
+        className="translate-x-[-24.5px]"
         onChange={(e) => {
           handleChangeColor(e, !isSelected);
           setIsSelected(!isSelected);
         }}
       />
-      <label htmlFor={`filter__color__${color}`}>{color}</label>
+      <label htmlFor={`filter__color__${color}`} className="-translate-x-2">{color}</label>
     </div>
   );
 }
