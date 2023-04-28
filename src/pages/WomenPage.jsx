@@ -9,26 +9,19 @@ const WomenPage = () => {
   const { items } = GiveData();
   const [isFiltered, setIsFiltered] = useState(false);
   const [availableColors, setAvailableColors] = useState([]);
-  // i should clean thheheswee
-  // i should clean thheheswee
-  // i should clean thheheswee
-  // i should clean thheheswee
   const [filterValue, setFilterValue] = useState({
-    ordering: "bestSold",
-    filter: {
-      size: {
-        Xl: true,
-        L: true,
-        M: true,
-        S: true,
-        Sx: true,
-      },
-      price: {
-        start: 0,
-        end: Infinity,
-      },
-      color: {},
+    size: {
+      Xl: true,
+      L: true,
+      M: true,
+      S: true,
+      Sx: true,
     },
+    price: {
+      start: 0,
+      end: Infinity,
+    },
+    color: {},
   });
   const [pageItems, setPageItems] = useState([]);
   const filteredItems = items.filter((item) => item.category === "women");
@@ -50,10 +43,7 @@ const WomenPage = () => {
     // making an object for filter data
     setFilterValue({
       ...filterValue,
-      filter: {
-        ...filterValue.filter,
-        color: colorsData,
-      },
+      color: colorsData,
     });
     setAvailableColors(Array.from(colors));
   }, [items]);
@@ -167,12 +157,9 @@ const WomenPage = () => {
   function handleChangeSizeFilter(e) {
     setFilterValue({
       ...filterValue,
-      filter: {
-        ...filterValue.filter,
-        size: {
-          ...filterValue.filter.size,
-          [e.target.name]: !filterValue.filter.size[e.target.name],
-        },
+      size: {
+        ...filterValue.size,
+        [e.target.name]: !filterValue.size[e.target.name],
       },
     });
   }
@@ -182,12 +169,9 @@ const WomenPage = () => {
     const endPrice = e.target.getAttribute("endPrice");
     setFilterValue({
       ...filterValue,
-      filter: {
-        ...filterValue.filter,
-        price: {
-          start: startPrice,
-          end: endPrice,
-        },
+      price: {
+        start: startPrice,
+        end: endPrice,
       },
     });
   }
@@ -195,18 +179,21 @@ const WomenPage = () => {
   function handleChangeColorFilter(e, selectStatus) {
     setFilterValue({
       ...filterValue,
-      filter: {
-        ...filterValue.filter,
-        color: {
-          ...filterValue.filter.color,
-          [e.target.name]: selectStatus,
-        },
+      color: {
+        ...filterValue.color,
+        [e.target.name]: selectStatus,
       },
     });
   }
 
+  console.log(filterValue);
+
   return (
-    <div onLoad={() => {handleSortItems("bestSold")}}>
+    <div
+      onLoad={() => {
+        handleSortItems("bestSold");
+      }}
+    >
       <div>
         <h1>Women</h1>
         <div className="flex" onClick={() => setIsFiltered(!isFiltered)}>
@@ -225,7 +212,7 @@ const WomenPage = () => {
         <form>
           <div>
             <input
-              checked={filterValue.filter.size.Xl}
+              checked={filterValue.size.Xl}
               name="Xl"
               type="checkbox"
               id="filter__size__XL"
@@ -233,7 +220,7 @@ const WomenPage = () => {
             />
             <label for="filter__size__XL">XL</label>
             <input
-              checked={filterValue.filter.size.L}
+              checked={filterValue.size.L}
               name="L"
               type="checkbox"
               id="filter__size__L"
@@ -241,7 +228,7 @@ const WomenPage = () => {
             />
             <label for="filter__size__L">L</label>
             <input
-              checked={filterValue.filter.size.M}
+              checked={filterValue.size.M}
               name="M"
               type="checkbox"
               id="filter__size__M"
@@ -249,7 +236,7 @@ const WomenPage = () => {
             />
             <label for="filter__size__M">M</label>
             <input
-              checked={filterValue.filter.size.S}
+              checked={filterValue.size.S}
               name="S"
               type="checkbox"
               id="filter__size__S"
@@ -257,7 +244,7 @@ const WomenPage = () => {
             />
             <label for="filter__size__S">S</label>
             <input
-              checked={filterValue.filter.size.Sx}
+              checked={filterValue.size.Sx}
               name="Sx"
               type="checkbox"
               id="filter__size__XS"
