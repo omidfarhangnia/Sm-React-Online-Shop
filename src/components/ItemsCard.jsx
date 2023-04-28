@@ -5,7 +5,7 @@ const ItemsCard = ({ item }) => {
   const priceData =  givePriceData(item.price, item.discount.discountValue);
   
   return (
-    <div className="min-w-[300px] w-[30%] max-w-[350px] flex flex-col mx-auto select-none relative p-5" title={item.score}>
+    <div className="min-w-[300px] w-[30%] max-w-[350px] flex flex-col mx-auto select-none relative p-5">
       <div className="w-[104%] h-[104%] bg-gradient-to-br from-[#000000] to-[#434343] absolute top-[-2%] left-[-2%] rounded-md opacity-90 blur-[1px]"></div>
       <div className="relative text-white flex flex-col justify-around">
         {item.discount.hasDiscount ? (

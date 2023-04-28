@@ -9,6 +9,10 @@ const WomenPage = () => {
   const { items } = GiveData();
   const [isFiltered, setIsFiltered] = useState(false);
   const [availableColors, setAvailableColors] = useState([]);
+  // i should clean thheheswee
+  // i should clean thheheswee
+  // i should clean thheheswee
+  // i should clean thheheswee
   const [filterValue, setFilterValue] = useState({
     ordering: "bestSold",
     filter: {
@@ -56,75 +60,107 @@ const WomenPage = () => {
 
   function handleSortItems(status) {
     let items = [...pageItems];
-    if (status === "bestSold") {
-      setPageItems(items.sort((a, b) => Number(b.soldNum) - Number(a.soldNum)));
-    } else if (status === "bestDiscount") {
-      setPageItems(
-        items.sort(
-          (a, b) =>
-            Number(b.discount.discountValue) - Number(a.discount.discountValue)
-        )
-      );
-    } else if (status === "cheapestPrice") {
-      setPageItems(items.sort((a, b) => {
-        let APriceData = givePriceData(a.price, a.discount.discountValue);
-        let BPriceData = givePriceData(b.price, b.discount.discountValue);
-        
-        if (APriceData.dollar > BPriceData.dollar) {
-          return 1;
-        }
-        if (APriceData.dollar < BPriceData.dollar) {
-          return -1;
-        }
-        if (APriceData.dollar === BPriceData.dollar) {
-          if (APriceData.centWithoutLeading > BPriceData.centWithoutLeading) {
-            return 1;
-          }
-          if (APriceData.centWithoutLeading < BPriceData.centWithoutLeading) {
-            return -1;
-          }
-        }
-      }));
-    } else if (status === "HighestPrice") {
-      setPageItems(items.sort((a, b) => {
-        let APriceData = givePriceData(a.price, a.discount.discountValue);
-        let BPriceData = givePriceData(b.price, b.discount.discountValue);
-        
-        if (APriceData.dollar > BPriceData.dollar) {
-          return -1;
-        }
-        if (APriceData.dollar < BPriceData.dollar) {
-          return 1;
-        }
-        if (APriceData.dollar === BPriceData.dollar) {
-          if (APriceData.centWithoutLeading > BPriceData.centWithoutLeading) {
-            return -1;
-          }
-          if (APriceData.centWithoutLeading < BPriceData.centWithoutLeading) {
-            return 1;
-          }
-        }
-      }));
-    } else if (status === "bestScore") {
-      setPageItems(items.sort((a, b) => {
-        const AScore = giveScore(a.score);
-        const BScore = giveScore(b.score);
 
-        if (AScore.major > BScore.major) {
-          return -1;
-        }
-        if (AScore.major < BScore.major) {
-          return 1;
-        }
-        if (AScore.major === BScore.major) {
-          if (AScore.minor > BScore.minor) {
-            return -1;
-          }
-          if (AScore.minor < BScore.minor) {
-            return 1;
-          }
-        }
-      }))
+    switch (status) {
+      case "bestSold": {
+        setPageItems(
+          items.sort((a, b) => Number(b.soldNum) - Number(a.soldNum))
+        );
+        break;
+      }
+      case "bestDiscount": {
+        setPageItems(
+          items.sort(
+            (a, b) =>
+              Number(b.discount.discountValue) -
+              Number(a.discount.discountValue)
+          )
+        );
+        break;
+      }
+      case "cheapestPrice": {
+        setPageItems(
+          items.sort((a, b) => {
+            let APriceData = givePriceData(a.price, a.discount.discountValue);
+            let BPriceData = givePriceData(b.price, b.discount.discountValue);
+
+            if (APriceData.dollar > BPriceData.dollar) {
+              return 1;
+            }
+            if (APriceData.dollar < BPriceData.dollar) {
+              return -1;
+            }
+            if (APriceData.dollar === BPriceData.dollar) {
+              if (
+                APriceData.centWithoutLeading > BPriceData.centWithoutLeading
+              ) {
+                return 1;
+              }
+              if (
+                APriceData.centWithoutLeading < BPriceData.centWithoutLeading
+              ) {
+                return -1;
+              }
+            }
+          })
+        );
+        break;
+      }
+      case "HighestPrice": {
+        setPageItems(
+          items.sort((a, b) => {
+            let APriceData = givePriceData(a.price, a.discount.discountValue);
+            let BPriceData = givePriceData(b.price, b.discount.discountValue);
+
+            if (APriceData.dollar > BPriceData.dollar) {
+              return -1;
+            }
+            if (APriceData.dollar < BPriceData.dollar) {
+              return 1;
+            }
+            if (APriceData.dollar === BPriceData.dollar) {
+              if (
+                APriceData.centWithoutLeading > BPriceData.centWithoutLeading
+              ) {
+                return -1;
+              }
+              if (
+                APriceData.centWithoutLeading < BPriceData.centWithoutLeading
+              ) {
+                return 1;
+              }
+            }
+          })
+        );
+        break;
+      }
+      case "bestScore": {
+        setPageItems(
+          items.sort((a, b) => {
+            const AScore = giveScore(a.score);
+            const BScore = giveScore(b.score);
+
+            if (AScore.major > BScore.major) {
+              return -1;
+            }
+            if (AScore.major < BScore.major) {
+              return 1;
+            }
+            if (AScore.major === BScore.major) {
+              if (AScore.minor > BScore.minor) {
+                return -1;
+              }
+              if (AScore.minor < BScore.minor) {
+                return 1;
+              }
+            }
+          })
+        );
+        break;
+      }
+      default: {
+        return "";
+      }
     }
   }
 
@@ -170,7 +206,7 @@ const WomenPage = () => {
   }
 
   return (
-    <div>
+    <div onLoad={() => {handleSortItems("bestSold")}}>
       <div>
         <h1>Women</h1>
         <div className="flex" onClick={() => setIsFiltered(!isFiltered)}>
@@ -334,8 +370,8 @@ function giveScore(score) {
   let minor = score.match(/(?<=\.)\d/g)[0];
   return {
     major: Number(major),
-    minor: Number(minor)
-  }
+    minor: Number(minor),
+  };
 }
 
 export default WomenPage;
