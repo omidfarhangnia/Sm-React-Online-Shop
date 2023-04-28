@@ -165,8 +165,8 @@ const WomenPage = () => {
   }
 
   function handleChangePriceFilter(e) {
-    const startPrice = e.target.getAttribute("startPrice");
-    const endPrice = e.target.getAttribute("endPrice");
+    const startPrice = e.target.getAttribute("startprice");
+    const endPrice = e.target.getAttribute("endprice");
     setFilterValue({
       ...filterValue,
       price: {
@@ -185,8 +185,6 @@ const WomenPage = () => {
       },
     });
   }
-
-  console.log(filterValue);
 
   return (
     <div
@@ -218,7 +216,7 @@ const WomenPage = () => {
               id="filter__size__XL"
               onChange={handleChangeSizeFilter}
             />
-            <label for="filter__size__XL">XL</label>
+            <label htmlFor="filter__size__XL">XL</label>
             <input
               checked={filterValue.size.L}
               name="L"
@@ -226,7 +224,7 @@ const WomenPage = () => {
               id="filter__size__L"
               onChange={handleChangeSizeFilter}
             />
-            <label for="filter__size__L">L</label>
+            <label htmlFor="filter__size__L">L</label>
             <input
               checked={filterValue.size.M}
               name="M"
@@ -234,7 +232,7 @@ const WomenPage = () => {
               id="filter__size__M"
               onChange={handleChangeSizeFilter}
             />
-            <label for="filter__size__M">M</label>
+            <label htmlFor="filter__size__M">M</label>
             <input
               checked={filterValue.size.S}
               name="S"
@@ -242,7 +240,7 @@ const WomenPage = () => {
               id="filter__size__S"
               onChange={handleChangeSizeFilter}
             />
-            <label for="filter__size__S">S</label>
+            <label htmlFor="filter__size__S">S</label>
             <input
               checked={filterValue.size.Sx}
               name="Sx"
@@ -250,63 +248,63 @@ const WomenPage = () => {
               id="filter__size__XS"
               onChange={handleChangeSizeFilter}
             />
-            <label for="filter__size__XS">XS</label>
+            <label htmlFor="filter__size__XS">XS</label>
           </div>
           <div>
             <input
               type="radio"
               name="filterPrice"
               id="price__1200"
-              startPrice={1200}
-              endPrice={Infinity}
+              startprice={1200}
+              endprice={Infinity}
               onChange={handleChangePriceFilter}
             />
-            <label for="price__1200">$1200+</label>
+            <label htmlFor="price__1200">$1200+</label>
             <input
               type="radio"
               name="filterPrice"
               id="price__600__1200"
-              startPrice={600}
-              endPrice={1200}
+              startprice={600}
+              endprice={1200}
               onChange={handleChangePriceFilter}
             />
-            <label for="price__600__1200">$600-$1200</label>
+            <label htmlFor="price__600__1200">$600-$1200</label>
             <input
               type="radio"
               name="filterPrice"
               id="price__300__600"
-              startPrice={300}
-              endPrice={600}
+              startprice={300}
+              endprice={600}
               onChange={handleChangePriceFilter}
             />
-            <label for="price__300__600">$300-$600</label>
+            <label htmlFor="price__300__600">$300-$600</label>
             <input
               type="radio"
               name="filterPrice"
               id="price__150__300"
-              startPrice={150}
-              endPrice={300}
+              startprice={150}
+              endprice={300}
               onChange={handleChangePriceFilter}
             />
-            <label for="price__150__300">$150-$300</label>
+            <label htmlFor="price__150__300">$150-$300</label>
             <input
               type="radio"
               name="filterPrice"
               id="price__50__150"
-              startPrice={50}
-              endPrice={150}
+              startprice={50}
+              endprice={150}
               onChange={handleChangePriceFilter}
             />
-            <label for="price__50__150">$50-$150</label>
+            <label htmlFor="price__50__150">$50-$150</label>
             <input
               type="radio"
               name="filterPrice"
               id="price__7__50"
-              startPrice={7}
-              endPrice={50}
+              startprice={7}
+              endprice={50}
               onChange={handleChangePriceFilter}
             />
-            <label for="price__7__50">$7-$50</label>
+            <label htmlFor="price__7__50">$7-$50</label>
           </div>
           <div>
             {availableColors.map((color, index) => (
@@ -347,7 +345,7 @@ function GiveColorsForFilter({ color, handleChangeColor }) {
           setIsSelected(!isSelected);
         }}
       />
-      <label for={`filter__color__${color}`}>{color}</label>
+      <label htmlFor={`filter__color__${color}`}>{color}</label>
     </div>
   );
 }

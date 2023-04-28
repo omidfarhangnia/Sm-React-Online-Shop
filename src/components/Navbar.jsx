@@ -31,24 +31,27 @@ const Navbar = () => {
       </div>
       <ul className="hidden md:flex justify-center items-center gap-4 lg:gap-6">
         <li>
-          <Link to={"/WomenPage"}>
-            <a className="capitalize lg:text-[19px] text-[#121212] font-light">
-              women
-            </a>
+          <Link
+            to={"/WomenPage"}
+            className="capitalize lg:text-[19px] text-[#121212] font-light"
+          >
+            women
           </Link>
         </li>
         <li>
-          <Link to={"/MenPage"}>
-            <a className="capitalize lg:text-[19px] text-[#121212] font-light">
-              men
-            </a>
+          <Link
+            to={"/MenPage"}
+            className="capitalize lg:text-[19px] text-[#121212] font-light"
+          >
+            men
           </Link>
         </li>
         <li>
-          <Link to={"/BabyPage"}>
-            <a className="capitalize lg:text-[19px] text-[#121212] font-light">
-              baby
-            </a>
+          <Link
+            to={"/BabyPage"}
+            className="capitalize lg:text-[19px] text-[#121212] font-light"
+          >
+            baby
           </Link>
         </li>
         <li>
