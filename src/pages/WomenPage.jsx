@@ -15,11 +15,11 @@ const WomenPage = () => {
       L: false,
       M: false,
       S: false,
-      Sx: false,
+      Xs: false,
     },
     price: {
-      start: 0,
-      end: Infinity,
+      start: null,
+      end: null,
     },
     color: {},
   });
@@ -186,6 +186,15 @@ const WomenPage = () => {
     });
   }
 
+  function handleSetFilter() {
+    let sizeFilter = returnFilteredValue("size", filterValue),
+      priceFilter = returnFilteredValue("price", filterValue),
+      colorFilter = returnFilteredValue("color", filterValue);
+    console.log(sizeFilter);
+    console.log(priceFilter);
+    console.log(colorFilter);
+  }
+
   return (
     <div>
       <div className="flex flex-wrap justify-between px-5 my-10 md:px-10">
@@ -211,9 +220,16 @@ const WomenPage = () => {
         </select>
       </div>
       {isFiltered && (
-        <form className="flex flex-col gap-5 p-5 bg-slate-100 rounded-lg lg:flex-row lg:p-10 lg:mx-10">
+        <form
+          className="flex flex-col flex-wrap gap-5 p-5 bg-slate-100 rounded-lg lg:flex-row lg:p-10 lg:mx-10"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <div className="flex flex-wrap lg:flex-col lg:w-[30%] gap-3 pb-4 border-b-2 border-b-black border-b-solid lg:border-0">
-            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">Size</h1>
+            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">
+              Size
+            </h1>
             <span>
               <input
                 checked={filterValue.size.Xl}
@@ -265,7 +281,7 @@ const WomenPage = () => {
             <span>
               <input
                 checked={filterValue.size.Sx}
-                name="Sx"
+                name="Xs"
                 type="checkbox"
                 id="filter__size__XS"
                 onChange={handleChangeSizeFilter}
@@ -276,7 +292,9 @@ const WomenPage = () => {
             </span>
           </div>
           <div className="flex lg:flex-col lg:w-[30%] flex-wrap justify-between lg:justify-normal gap-5 pb-4 border-b-2 border-b-black border-b-solid lg:border-0">
-            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">Price</h1>
+            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">
+              Price
+            </h1>
             <span>
               <input
                 type="radio"
@@ -286,7 +304,9 @@ const WomenPage = () => {
                 endprice={Infinity}
                 onChange={handleChangePriceFilter}
               />
-              <label className="font-spartan ml-1" htmlFor="price__1200">$1200+</label>
+              <label className="font-spartan ml-1" htmlFor="price__1200">
+                $1200+
+              </label>
             </span>
             <span>
               <input
@@ -297,7 +317,9 @@ const WomenPage = () => {
                 endprice={1200}
                 onChange={handleChangePriceFilter}
               />
-              <label className="font-spartan ml-1" htmlFor="price__600__1200">$600-$1200</label>
+              <label className="font-spartan ml-1" htmlFor="price__600__1200">
+                $600-$1200
+              </label>
             </span>
             <span>
               <input
@@ -308,7 +330,9 @@ const WomenPage = () => {
                 endprice={600}
                 onChange={handleChangePriceFilter}
               />
-              <label className="font-spartan ml-1" htmlFor="price__300__600">$300-$600</label>
+              <label className="font-spartan ml-1" htmlFor="price__300__600">
+                $300-$600
+              </label>
             </span>
             <span>
               <input
@@ -319,7 +343,9 @@ const WomenPage = () => {
                 endprice={300}
                 onChange={handleChangePriceFilter}
               />
-              <label className="font-spartan ml-1" htmlFor="price__150__300">$150-$300</label>
+              <label className="font-spartan ml-1" htmlFor="price__150__300">
+                $150-$300
+              </label>
             </span>
             <span>
               <input
@@ -330,7 +356,9 @@ const WomenPage = () => {
                 endprice={150}
                 onChange={handleChangePriceFilter}
               />
-              <label className="font-spartan ml-1" htmlFor="price__50__150">$50-$150</label>
+              <label className="font-spartan ml-1" htmlFor="price__50__150">
+                $50-$150
+              </label>
             </span>
             <span>
               <input
@@ -341,11 +369,15 @@ const WomenPage = () => {
                 endprice={50}
                 onChange={handleChangePriceFilter}
               />
-              <label className="font-spartan ml-1" htmlFor="price__7__50">$7-$50</label>
+              <label className="font-spartan ml-1" htmlFor="price__7__50">
+                $7-$50
+              </label>
             </span>
           </div>
           <div className="flex lg:flex-col lg:w-[30%] flex-wrap justify-between lg:justify-normal gap-5">
-            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">Color</h1>
+            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">
+              Color
+            </h1>
             {availableColors.map((color, index) => (
               <GiveColorsForFilter
                 key={index}
@@ -353,6 +385,14 @@ const WomenPage = () => {
                 handleChangeColor={handleChangeColorFilter}
               />
             ))}
+          </div>
+          <div className="w-full mt-10 flex justify-center">
+            <button
+              className="uppercase text-1xl lg:text-3xl bg-gradient-to-br rounded-full from-[#000000] to-[#434343] text-white py-3 px-10 lg:py-5 lg:px-16"
+              onClick={handleSetFilter}
+            >
+              set Filter
+            </button>
           </div>
         </form>
       )}
@@ -385,7 +425,9 @@ function GiveColorsForFilter({ color, handleChangeColor }) {
           setIsSelected(!isSelected);
         }}
       />
-      <label htmlFor={`filter__color__${color}`} className="-translate-x-2">{color}</label>
+      <label htmlFor={`filter__color__${color}`} className="-translate-x-2">
+        {color}
+      </label>
     </div>
   );
 }
@@ -397,6 +439,31 @@ function giveScore(score) {
     major: Number(major),
     minor: Number(minor),
   };
+}
+
+function returnFilteredValue(status, filterValue) {
+  if (status === "size") {
+    let selectedSize = [];
+    for (let member in filterValue.size) {
+      if (filterValue.size[member] === true) {
+        selectedSize.push(member);
+      }
+    }
+    return selectedSize;
+  } else if (status === "price") {
+    return {
+      start: Number(filterValue.price.start),
+      end: Number(filterValue.price.end),
+    };
+  } else if (status === "color") {
+    let selectedColor = [];
+    for (let member in filterValue.color) {
+      if (filterValue.color[member] === true) {
+        selectedColor.push(member);
+      }
+    }
+    return selectedColor;
+  }
 }
 
 export default WomenPage;
