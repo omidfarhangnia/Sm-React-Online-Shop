@@ -9,4 +9,15 @@
     .font-spartan{
         font-family: "League Spartan";
     }
+
+    .color__checkBox{
+        width: 30px;
+        height: 30px;
+        opacity: .2;
+        transition: .5s;
+    }
+    
+    .color__checkBox:hover{
+        opacity: 1;
+    }
 }

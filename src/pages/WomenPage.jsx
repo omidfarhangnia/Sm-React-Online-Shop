@@ -11,11 +11,11 @@ const WomenPage = () => {
   const [availableColors, setAvailableColors] = useState([]);
   const [filterValue, setFilterValue] = useState({
     size: {
-      Xl: true,
-      L: true,
-      M: true,
-      S: true,
-      Sx: true,
+      Xl: false,
+      L: false,
+      M: false,
+      S: false,
+      Sx: false,
     },
     price: {
       start: 0,
@@ -35,7 +35,7 @@ const WomenPage = () => {
       for (var j = 0; j < filteredItems[i].color.length; j++) {
         if (!colors.has(filteredItems[i].color[j])) {
           colors.add(filteredItems[i].color[j]);
-          colorsData[filteredItems[i].color[j]] = true;
+          colorsData[filteredItems[i].color[j]] = false;
         }
       }
     }
@@ -187,12 +187,8 @@ const WomenPage = () => {
   }
 
   return (
-    <div
-      onLoad={() => {
-        handleSortItems("bestSold");
-      }}
-    >
-      <div className="flex flex-wrap justify-between px-5 md:px-10">
+    <div>
+      <div className="flex flex-wrap justify-between px-5 my-10 md:px-10">
         <h1 className="text-center font-bold font-spartan text-4xl uppercase md:text-5xl py-5 mb-5 w-full">
           Women
         </h1>
@@ -204,7 +200,7 @@ const WomenPage = () => {
           Filter
         </div>
         <select
-          className="text-[19px]"
+          className="text-[19px] px-10 py-4 uppercase"
           onChange={(e) => handleSortItems(e.target.value)}
         >
           <option value="bestSold">best sellers</option>
@@ -215,8 +211,9 @@ const WomenPage = () => {
         </select>
       </div>
       {isFiltered && (
-        <form className="flex flex-col gap-5 p-5">
-          <div className="flex gap-3 pb-4 border-b-2 border-b-black border-b-solid">
+        <form className="flex flex-col gap-5 p-5 bg-slate-100 rounded-lg lg:flex-row lg:p-10 lg:mx-10">
+          <div className="flex flex-wrap lg:flex-col lg:w-[30%] gap-3 pb-4 border-b-2 border-b-black border-b-solid lg:border-0">
+            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">Size</h1>
             <span>
               <input
                 checked={filterValue.size.Xl}
@@ -278,7 +275,8 @@ const WomenPage = () => {
               </label>
             </span>
           </div>
-          <div className="flex flex-wrap justify-between gap-5 pb-4 border-b-2 border-b-black border-b-solid">
+          <div className="flex lg:flex-col lg:w-[30%] flex-wrap justify-between lg:justify-normal gap-5 pb-4 border-b-2 border-b-black border-b-solid lg:border-0">
+            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">Price</h1>
             <span>
               <input
                 type="radio"
@@ -346,7 +344,8 @@ const WomenPage = () => {
               <label className="font-spartan ml-1" htmlFor="price__7__50">$7-$50</label>
             </span>
           </div>
-          <div className="flex flex-wrap justify-between gap-5">
+          <div className="flex lg:flex-col lg:w-[30%] flex-wrap justify-between lg:justify-normal gap-5">
+            <h1 className="w-full text-2xl uppercase mb-5 font-bold lg:text-3xl lg:mb-10">Color</h1>
             {availableColors.map((color, index) => (
               <GiveColorsForFilter
                 key={index}
@@ -367,20 +366,20 @@ const WomenPage = () => {
 };
 
 function GiveColorsForFilter({ color, handleChangeColor }) {
-  const [isSelected, setIsSelected] = useState(true);
+  const [isSelected, setIsSelected] = useState(false);
 
   return (
     <div className="flex items-center gap-1 select-none">
       <span
         style={{ background: color }}
-        className="w-[30px] h-[30px] inline-block rounded-full border-solid border-[1px] border-black"
+        className="w-[30px] h-[30px] inline-block border-solid border-[1px] border-black"
       ></span>
       <input
         type="checkbox"
         id={`filter__color__${color}`}
         name={color}
         checked={isSelected}
-        className="translate-x-[-24.5px]"
+        className="translate-x-[-34px] color__checkBox"
         onChange={(e) => {
           handleChangeColor(e, !isSelected);
           setIsSelected(!isSelected);
