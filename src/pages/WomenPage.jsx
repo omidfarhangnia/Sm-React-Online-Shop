@@ -11,11 +11,11 @@ const WomenPage = () => {
   const [availableColors, setAvailableColors] = useState([]);
   const [filterValue, setFilterValue] = useState({
     size: {
-      Xl: false,
-      L: false,
-      M: false,
-      S: false,
-      Xs: false,
+      xl: false,
+      l: false,
+      m: false,
+      s: false,
+      xs: false,
     },
     price: {
       start: null,
@@ -189,10 +189,53 @@ const WomenPage = () => {
   function handleSetFilter() {
     let sizeFilter = returnFilteredValue("size", filterValue),
       priceFilter = returnFilteredValue("price", filterValue),
-      colorFilter = returnFilteredValue("color", filterValue);
-    console.log(sizeFilter);
-    console.log(priceFilter);
-    console.log(colorFilter);
+      colorFilter = returnFilteredValue("color", filterValue),
+      items = [...filteredItems];
+
+    if (sizeFilter.length > 0) {
+      items = items.filter((item) => {
+          for (let i = 0; i < item.size.length; i++) {
+            for (let j = 0; j < sizeFilter.length; j++) {
+              if (item.size[i] === sizeFilter[j]) {
+                return 1;
+              }
+            }
+          }
+        })
+    }
+    // filtering price
+    if (
+      !Object.is(priceFilter.start, null) &&
+      !Object.is(priceFilter.end, null)
+    ) {
+      items = items.filter((item) => {
+          let priceData = givePriceData(
+            item.price,
+            item.discount.discountValue
+          );
+
+          if (
+            priceData.dollar > priceFilter.start &&
+            priceData.dollar < priceFilter.end
+          ) { 
+            return 1;
+          }
+        })
+    }
+    // filtering color
+    if (colorFilter.length > 0) {
+      items = items.filter((item) => {
+          for(let i = 0; i < item.color.length; i++){
+            for(let j = 0; j < colorFilter.length; j++){
+              if(item.color[i] === colorFilter[j]){
+                return 1;
+              }
+            }
+          }
+        })
+    }
+
+    setPageItems(items);
   }
 
   return (
@@ -232,8 +275,8 @@ const WomenPage = () => {
             </h1>
             <span>
               <input
-                checked={filterValue.size.Xl}
-                name="Xl"
+                checked={filterValue.size.xl}
+                name="xl"
                 type="checkbox"
                 id="filter__size__XL"
                 onChange={handleChangeSizeFilter}
@@ -244,8 +287,8 @@ const WomenPage = () => {
             </span>
             <span>
               <input
-                checked={filterValue.size.L}
-                name="L"
+                checked={filterValue.size.l}
+                name="l"
                 type="checkbox"
                 id="filter__size__L"
                 onChange={handleChangeSizeFilter}
@@ -256,8 +299,8 @@ const WomenPage = () => {
             </span>
             <span>
               <input
-                checked={filterValue.size.M}
-                name="M"
+                checked={filterValue.size.m}
+                name="m"
                 type="checkbox"
                 id="filter__size__M"
                 onChange={handleChangeSizeFilter}
@@ -269,7 +312,7 @@ const WomenPage = () => {
             <span>
               <input
                 checked={filterValue.size.S}
-                name="S"
+                name="s"
                 type="checkbox"
                 id="filter__size__S"
                 onChange={handleChangeSizeFilter}
@@ -280,8 +323,8 @@ const WomenPage = () => {
             </span>
             <span>
               <input
-                checked={filterValue.size.Sx}
-                name="Xs"
+                checked={filterValue.size.xs}
+                name="xs"
                 type="checkbox"
                 id="filter__size__XS"
                 onChange={handleChangeSizeFilter}
@@ -451,10 +494,17 @@ function returnFilteredValue(status, filterValue) {
     }
     return selectedSize;
   } else if (status === "price") {
-    return {
-      start: Number(filterValue.price.start),
-      end: Number(filterValue.price.end),
-    };
+    if (filterValue.price.start === null && filterValue.price.end === null) {
+      return {
+        start: null,
+        end: null,
+      };
+    } else {
+      return {
+        start: Number(filterValue.price.start),
+        end: Number(filterValue.price.end),
+      };
+    }
   } else if (status === "color") {
     let selectedColor = [];
     for (let member in filterValue.color) {
