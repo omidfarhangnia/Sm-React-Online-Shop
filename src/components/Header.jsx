@@ -35,19 +35,29 @@ const TopNav = () => {
           All week 24/7
         </div>
       </div>
-      <div className="flex text-white gap-3 lg:gap-6">
-        <a href="#">
-          <FaFacebook size={20} />
-        </a>
-        <a href="#">
-          <FaTwitter size={20} />
-        </a>
-        <a href="#">
-          <RiInstagramFill size={20} />
-        </a>
-        <a href="#">
-          <FaPinterest size={20} />
-        </a>
+      <div>
+        <ul className="flex text-white gap-3 lg:gap-6">
+          <li>
+            <a href="#">
+              <FaFacebook size={20} />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <FaTwitter size={20} />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <RiInstagramFill size={20} />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <FaPinterest size={20} />
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   );
