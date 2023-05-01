@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { GiveData } from "../context/AuthContext";
 import ItemsCard from "../components/ItemsCard";
 import { RxCross1 } from "react-icons/rx";
@@ -24,7 +24,9 @@ const WomenPage = () => {
     color: {},
   });
   const [pageItems, setPageItems] = useState([]);
-  const filteredItems = items.filter((item) => item.category === "women");
+  const filteredItems = useMemo(() => {
+    return items.filter((item) => item.category === "women");
+  }, [items])
 
   useEffect(() => {
     setPageItems(filteredItems);
