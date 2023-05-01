@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Categories from "../components/Categories";
 
 const BabyPage = () => {
   return (
-    <div>
-      <h1>welcome to baby page</h1>
-    </div>
-  )
-}
+    <>
+      <Categories categoryName={"baby"}/>
+    </>
+  );
+};
 
-export default BabyPage
+export default BabyPage;

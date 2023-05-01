@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
+import Categories from "../components/Categories";
 
 const MenPage = () => {
   return (
-    <div>
-      <h1>welcome to men page</h1>
-      
-    </div>
-  )
-}
+    <>
+      <Categories categoryName={"man"}/>
+    </>
+  );
+};
 
-export default MenPage
+export default MenPage;
