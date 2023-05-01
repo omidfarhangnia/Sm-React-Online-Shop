@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsTelephone, BsClock } from "react-icons/bs";
 import { RiMapPin2Line } from "react-icons/ri";
+import StripeImage from "../images/Stripe_x42.png";
+import AESImage from "../images/AES256_x42.png";
+import PayPalImage from "../images/paypal_2_x42.png";
+import VisaImage from "../images/visa_x42.png";
+import MasterCardImage from "../images/mastercard_x42.png";
+import DiscoverImage from "../images/discover_x42.png";
+import AmericanExpressImage from "../images/american-express_x42.png";
 
 const Footer = () => {
   return (
@@ -118,6 +125,19 @@ const Footer = () => {
             </li>
           </ul>
         </div>
+      </div>
+      <div className="flex flex-wrap justify-between gap-5 p-5 bg-black/10">
+        <p className="w-full lg:w-[20%] text-center">Copyright © 2032 all rights reserved</p>
+        <div className="flex w-full lg:w-[50%] justify-around"> 
+          <img className="max-w-[60px] object-contain" src={AESImage} alt="AES logo image"/>
+          <img className="max-w-[60px] object-contain" src={StripeImage} alt="stripe logo image"/>
+          <img className="max-w-[60px] object-contain" src={PayPalImage} alt="paypal logo image"/>
+          <img className="max-w-[60px] object-contain" src={VisaImage} alt="visa logo image"/>
+          <img className="max-w-[60px] object-contain" src={MasterCardImage} alt="master card logo image"/>
+          <img className="max-w-[60px] object-contain" src={DiscoverImage} alt="discover logo image"/>
+          <img className="max-w-[60px] object-contain" src={AmericanExpressImage} alt="american express logo image"/>
+        </div>
+        <a href="#" className="inline-block mx-auto lg:20% lg:mx-0">Developed By Omid Farhangnia</a>
       </div>
     </footer>
   );
