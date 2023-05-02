@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import { MdOutlineAccountCircle } from "react-icons/md";
-import { RiEarthLine } from "react-icons/ri";
-import { BsSearch } from "react-icons/bs";
+import { GiveData } from "../context/AuthContext";
 
 const Navbar = () => {
+  const { user } = GiveData();
+
   return (
     <nav className="flex justify-between items-center mx-10 my-5">
       <div>
@@ -63,11 +64,36 @@ const Navbar = () => {
           </a>
         </li>
       </ul>
-      <div className="hidden md:flex gap-3 lg:gap-7">
-        <BsSearch size={20} />
-        <RiEarthLine size={20} />
-        <MdOutlineAccountCircle size={20} />
-        <FiShoppingCart size={20} />
+      <div className="hidden md:flex items-center">
+        <div className="flex gap-3">
+          {user ? (
+            <button className="capitalize lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black">
+              Log out
+            </button>
+          ) : (
+            <>
+              <Link to={"/SignUpPage"}>
+                <button className="capitalize lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black">
+                  sign up
+                </button>
+              </Link>
+              <Link to={"/SignInPage"}>
+                <button className="capitalize lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black">
+                  sign in
+                </button>
+              </Link>
+            </>
+          )}
+        </div>
+
+        {user && (
+          <>
+            <div className="flex gap-3 lg:gap-7">
+              <MdOutlineAccountCircle size={26} />
+              <FiShoppingCart size={26} />
+            </div>
+          </>
+        )}
       </div>
     </nav>
   );
