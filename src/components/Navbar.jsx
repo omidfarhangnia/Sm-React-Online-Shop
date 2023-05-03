@@ -5,7 +5,7 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { GiveData } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { user } = GiveData();
+  const { user, LogOut } = GiveData();
 
   return (
     <nav className="flex justify-between items-center mx-10 my-5">
@@ -67,9 +67,12 @@ const Navbar = () => {
       <div className="hidden md:flex items-center">
         <div className="flex gap-3">
           {user ? (
-            <button className="capitalize lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black">
-              Log out
-            </button>
+              <button
+                onClick={LogOut}
+                className="capitalize mr-6 lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black"
+              >
+                Log out
+              </button>
           ) : (
             <>
               <Link to={"/SignUpPage"}>
@@ -89,8 +92,13 @@ const Navbar = () => {
         {user && (
           <>
             <div className="flex gap-3 lg:gap-7">
+              <Link to={"/AccountPage"}>
+
               <MdOutlineAccountCircle size={26} />
+              </Link>
+              <Link to={"/ShoppingCartPage"}>
               <FiShoppingCart size={26} />
+              </Link>
             </div>
           </>
         )}

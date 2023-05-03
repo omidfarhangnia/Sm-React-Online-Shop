@@ -8,6 +8,8 @@ import MenPage from "./pages/MenPage";
 import BabyPage from "./pages/BabyPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import ShoppingCartPage from "./pages/ShoppingCartPage";
+import AccountPage from "./pages/AccountPage";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/BabyPage" element={<BabyPage />} />
           <Route path="/SignInPage" element={<SignInPage />} />
           <Route path="/SignUpPage" element={<SignUpPage />} />
+          <Route path="/ShoppingCartPage" element={<ShoppingCartPage />} />
+          <Route path="/AccountPage" element={<AccountPage />} />
         </Routes>
         <Footer />
       </AuthContextProvider>

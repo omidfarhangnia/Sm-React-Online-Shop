@@ -40,6 +40,7 @@ const AuthContextProvider = ({ children }) => {
     createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, "users", email), {
       email: email,
+      password: password,
     });
   }
 
