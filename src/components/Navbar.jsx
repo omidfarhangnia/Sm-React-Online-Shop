@@ -7,7 +7,6 @@ import { GiveData } from "../context/AuthContext";
 const Navbar = () => {
   const { user, LogOut } = GiveData();
   const navigate = useNavigate();
-  console.log(user);
 
   return (
     <nav className="flex justify-between items-center mx-10 my-5">

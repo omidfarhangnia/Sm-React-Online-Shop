@@ -13,6 +13,7 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [user, setUser] = useState({});
+  const [selectedItem, setSelectedItem] = useState({});
 
   useEffect(() => {
     const q = query(collection(db, "items"));
@@ -53,7 +54,7 @@ const AuthContextProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ items, user, SignUp, LogIn, LogOut }}>
+    <AuthContext.Provider value={{ items, user, selectedItem, SignUp, LogIn, LogOut, setSelectedItem }}>
       {children}
     </AuthContext.Provider>
   );
