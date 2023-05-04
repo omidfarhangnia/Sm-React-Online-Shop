@@ -1,12 +1,12 @@
 import React from "react";
 import Categories from "../components/Categories";
 
-const WomenPage = () => {
+const Women = () => {
   return (
     <>
-      <Categories categoryName={"women"}/>
+      <Categories categoryName={"women"} />
     </>
   );
 };
 
-export default WomenPage;
+export default Women;
