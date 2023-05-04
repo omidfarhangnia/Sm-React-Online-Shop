@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { GiveData } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, LogOut } = GiveData();
+  const navigate = useNavigate();
+  console.log(user);
 
   return (
     <nav className="flex justify-between items-center mx-10 my-5">
@@ -33,7 +35,7 @@ const Navbar = () => {
       <ul className="hidden md:flex justify-center items-center gap-4 lg:gap-6">
         <li>
           <Link
-            to={"/WomenPage"}
+            to={"/Women"}
             className="capitalize lg:text-[19px] text-[#121212] font-light"
           >
             women
@@ -49,7 +51,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            to={"/BabyPage"}
+            to={"/Baby"}
             className="capitalize lg:text-[19px] text-[#121212] font-light"
           >
             baby
@@ -67,20 +69,23 @@ const Navbar = () => {
       <div className="hidden md:flex items-center">
         <div className="flex gap-3">
           {user ? (
-              <button
-                onClick={LogOut}
-                className="capitalize mr-6 lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black"
-              >
-                Log out
-              </button>
+            <button
+              onClick={() => {
+                LogOut()
+                navigate("/");
+              }}
+              className="capitalize mr-6 lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black"
+            >
+              Log out
+            </button>
           ) : (
             <>
-              <Link to={"/SignUpPage"}>
+              <Link to={"/SignUp"}>
                 <button className="capitalize lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black">
                   sign up
                 </button>
               </Link>
-              <Link to={"/SignInPage"}>
+              <Link to={"/SignIn"}>
                 <button className="capitalize lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black">
                   sign in
                 </button>
@@ -92,12 +97,11 @@ const Navbar = () => {
         {user && (
           <>
             <div className="flex gap-3 lg:gap-7">
-              <Link to={"/AccountPage"}>
-
-              <MdOutlineAccountCircle size={26} />
+              <Link to={"/Account"}>
+                <MdOutlineAccountCircle size={26} />
               </Link>
               <Link to={"/ShoppingCartPage"}>
-              <FiShoppingCart size={26} />
+                <FiShoppingCart size={26} />
               </Link>
             </div>
           </>

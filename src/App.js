@@ -3,13 +3,14 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import AuthContextProvider from "./context/AuthContext";
-import WomenPage from "./pages/WomenPage";
-import MenPage from "./pages/MenPage";
-import BabyPage from "./pages/BabyPage";
-import SignInPage from "./pages/SignInPage";
-import SignUpPage from "./pages/SignUpPage";
-import ShoppingCartPage from "./pages/ShoppingCartPage";
-import AccountPage from "./pages/AccountPage";
+import Women from "./pages/Women";
+import MenPage from "./pages/Men";
+import Baby from "./pages/Baby";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import ShoppingCartPage from "./pages/ShoppingCart";
+import Account from "./pages/Account";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -18,13 +19,20 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/WomenPage" element={<WomenPage />} />
+          <Route path="/Women" element={<Women />} />
           <Route path="/MenPage" element={<MenPage />} />
-          <Route path="/BabyPage" element={<BabyPage />} />
-          <Route path="/SignInPage" element={<SignInPage />} />
-          <Route path="/SignUpPage" element={<SignUpPage />} />
+          <Route path="/Baby" element={<Baby />} />
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
           <Route path="/ShoppingCartPage" element={<ShoppingCartPage />} />
-          <Route path="/AccountPage" element={<AccountPage />} />
+          <Route
+            path="/Account"
+            element={
+              <ProtectedRoute>
+                <Account />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
         <Footer />
       </AuthContextProvider>
