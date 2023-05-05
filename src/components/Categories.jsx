@@ -450,7 +450,7 @@ const Categories = ({ categoryName }) => {
   );
 }
 
-function GiveColorsForFilter({ color, handleChangeColor }) {
+export function GiveColorsForFilter({ color, handleChangeColor }) {
   const [isSelected, setIsSelected] = useState(false);
 
   return (

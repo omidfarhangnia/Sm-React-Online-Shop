@@ -8,7 +8,7 @@ const ItemsCard = ({ item }) => {
   const priceData = givePriceData(item.price, item.discount.discountValue);
 
   return (
-    <Link to="/SelectedItem">
+    <Link to="/Item">
       <div
         onClick={() => {
           setSelectedItem(item);
@@ -59,7 +59,7 @@ const ItemsCard = ({ item }) => {
 
 export default ItemsCard;
 
-function ItemStars({ score }) {
+export function ItemStars({ score }) {
   let stars = [],
     majorNum = Number(score.match(/^\d/gm)[0]),
     size = 20;
