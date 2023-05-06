@@ -75,7 +75,7 @@ export function ItemStars({ score }) {
   }
 
   return (
-    <div className="flex w-[50%] p-3 justify-between items-center">
+    <div className="flex justify-between items-center">
       {stars.map((item, index) => (
         <span key={index}>{item}</span>
       ))}
