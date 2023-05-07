@@ -5,7 +5,7 @@ import { GrCheckbox, GrCheckboxSelected } from "react-icons/gr";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const Item = () => {
-  const { selectedItem } = GiveData();
+  const { selectedItem, user } = GiveData();
   const [selectedColor, setSelectedColor] = useState(selectedItem.color[0]);
   const [selectedSize, setSelectedSize] = useState(selectedItem.size[0]);
   const [isLiked, setIsLiked] = useState(false);
@@ -20,6 +20,18 @@ const Item = () => {
 
   function handleSelectSize(size) {
     setSelectedSize(size);
+  }
+
+  function handleAddToCard() {
+    if(user) {
+      
+    }else{
+      alert("please log in to your account first")
+    }
+  }
+
+  function handleLikeItem() {
+    setIsLiked(!isLiked);
   }
 
   if (Object.keys(selectedItem).length === 0) {
@@ -93,8 +105,15 @@ const Item = () => {
                   {selectedItem.price}
                 </div>
               )}
-              <button className="bg-[#121212] font-light font-openSans tracking-[2.5px] uppercase text-white/80 px-5 py-5">add to card</button>
-              <div onClick={() => setIsLiked(!isLiked)}>
+              <button
+                className="bg-[#121212] font-light font-openSans tracking-[2.5px] uppercase text-white/80 px-5 py-5"
+                onClick={handleAddToCard}
+              >
+                add to card
+              </button>
+              <div
+                onClick={handleLikeItem}
+              >
                 {isLiked ? (
                   <AiFillHeart size={30} />
                 ) : (
@@ -104,15 +123,39 @@ const Item = () => {
             </div>
             <hr />
             <div className="my-3">
-              <h3 className="text-[20px] font-medium text-black/80 uppercase mb-2">description</h3>
-              <p className="capitalize text-[14px]">{selectedItem.description}</p>
+              <h3 className="text-[20px] font-medium text-black/80 uppercase mb-2">
+                description
+              </h3>
+              <p className="capitalize text-[14px]">
+                {selectedItem.description}
+              </p>
             </div>
             <hr />
             <div className="my-3">
-              <h3 className="text-[20px] font-medium text-black/80 uppercase mb-2">additional information</h3>
-              <p className="text-[17px] text-black/75 font-openSans capitalize">color : {selectedItem.color.map((color, index) => `${color}${(selectedItem.color.length !== index + 1) ? ", " : ""}`)}</p>
-              <p className="text-[17px] text-black/75 font-openSans capitalize">size : {selectedItem.size.map((size, index) => `${size}${(selectedItem.color.length !== index + 1) ? ", " : ""}`)}</p>
-              <p className="text-[17px] text-black/75 font-openSans capitalize">score : {selectedItem.score} / 5.0</p>
+              <h3 className="text-[20px] font-medium text-black/80 uppercase mb-2">
+                additional information
+              </h3>
+              <p className="text-[17px] text-black/75 font-openSans capitalize">
+                color :{" "}
+                {selectedItem.color.map(
+                  (color, index) =>
+                    `${color}${
+                      selectedItem.color.length !== index + 1 ? ", " : ""
+                    }`
+                )}
+              </p>
+              <p className="text-[17px] text-black/75 font-openSans capitalize">
+                size :{" "}
+                {selectedItem.size.map(
+                  (size, index) =>
+                    `${size}${
+                      selectedItem.color.length !== index + 1 ? ", " : ""
+                    }`
+                )}
+              </p>
+              <p className="text-[17px] text-black/75 font-openSans capitalize">
+                score : {selectedItem.score} / 5.0
+              </p>
             </div>
           </div>
         </div>
