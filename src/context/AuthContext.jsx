@@ -16,7 +16,7 @@ const AuthContextProvider = ({ children }) => {
   const [selectedItem, setSelectedItem] = useState({});
 
   useEffect(() => {
-    const q = query(collection(db, "items"));
+    const q = query(collection(db, "products"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let todosArr = [];
       querySnapshot.forEach((doc) => {

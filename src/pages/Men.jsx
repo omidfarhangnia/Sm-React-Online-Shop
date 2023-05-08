@@ -4,7 +4,7 @@ import Categories from "../components/Categories";
 const MenPage = () => {
   return (
     <>
-      <Categories categoryName={"man"}/>
+      <Categories categoryName={"men"}/>
     </>
   );
 };

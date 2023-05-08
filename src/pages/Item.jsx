@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GiveData } from "../context/AuthContext";
 import { ItemStars, givePriceData } from "../components/ItemsCard";
 import { GrCheckbox, GrCheckboxSelected } from "react-icons/gr";
@@ -6,27 +6,37 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const Item = () => {
   const { selectedItem, user } = GiveData();
-  const [selectedColor, setSelectedColor] = useState(selectedItem.color[0]);
-  const [selectedSize, setSelectedSize] = useState(selectedItem.size[0]);
+  // const [selectedColor, setSelectedColor] = useState(selectedItem.color[0]);
+  const [size, setSize] = useState({selected: "", allSizes: []});
   const [isLiked, setIsLiked] = useState(false);
+  
+  useEffect(() => {
+    const sizes = [];
+    
+    for (var i = 0; i < selectedItem.sizeAndColor.length; i++) {
+      sizes.push(selectedItem.sizeAndColor[i].sizeName);
+    }
+
+    setSize({selected: sizes[0], allSizes: sizes});
+  }, []);
+
   const priceData = givePriceData(
     selectedItem.price,
     selectedItem.discount.discountValue
   );
 
-  function handleSelectColor(color) {
-    setSelectedColor(color);
-  }
+  // function handleSelectColor(color) {
+  //   setSelectedColor(color);
+  // }
 
-  function handleSelectSize(size) {
-    setSelectedSize(size);
-  }
+  // function handleSelectSize(size) {
+  //   setSelectedSize(size);
+  // }
 
   function handleAddToCard() {
-    if(user) {
-      
-    }else{
-      alert("please log in to your account first")
+    if (user) {
+    } else {
+      alert("please log in to your account first");
     }
   }
 
@@ -41,9 +51,9 @@ const Item = () => {
       <div className="flex flex-col">
         <div className="flex flex-wrap md:flex-nowrap justify-between items-center w-full p-5 lg:p-10 bg-[#f8f8f8]">
           <span className="flex w-[45%] md:w-auto md:order-none order-2 opacity-70 justify-center">
-            <ItemStars score={selectedItem.score} />
+            <ItemStars grade={selectedItem.grade} />
           </span>
-          <h1 className="text-4xl mb-5 w-full md:w-auto md:order-none md:mb-0 text-center order-1 select-none md:text-5xl lg:text-7xl lg:tracking-[5px] font-bebasNeue">
+          <h1 className="text-2xl mb-5 w-full md:w-auto md:order-none md:mb-0 text-center order-1 select-none lg:text-4xl lg:tracking-[5px] font-bebasNeue">
             {selectedItem.title}
           </h1>
           <p className="text-[16px] md:text-[18px] lg:text-[20px] w-[45%] md:w-auto md:order-none order-2 text-black/70 uppercase font-openSans font-light">
@@ -55,11 +65,11 @@ const Item = () => {
             <img
               className="max-w-[350px] border-2 border-solid border-black p-5 object-cover object-center"
               src={selectedItem.imgPath}
-              alt={selectedItem.description}
+              alt={selectedItem.moreInfo.description}
             />
           </div>
           <div className="w-full md:w-[50%] p-5">
-            <div>
+            {/* <div>
               <p className="text-[20px] font-bold capitalize text-black/80 font-openSans">
                 Color : {selectedColor}
               </p>
@@ -74,8 +84,8 @@ const Item = () => {
                   />
                 ))}
               </div>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <p className="text-[20px] font-bold capitalize text-black/80 font-openSans">
                 Size : {selectedSize}
               </p>
@@ -89,6 +99,14 @@ const Item = () => {
                     category={"size"}
                   />
                 ))}
+              </div>
+            </div> */}
+            <div>
+              <p className="text-[20px] font-bold capitalize text-black/80 font-openSans">
+                Size : {size.selected}
+              </p>
+              <div className="flex gap-3 my-3">
+                {size.allSizes.map((size, index) => (<h1>{size}</h1>))}
               </div>
             </div>
             <hr />
@@ -111,9 +129,7 @@ const Item = () => {
               >
                 add to card
               </button>
-              <div
-                onClick={handleLikeItem}
-              >
+              <div onClick={handleLikeItem}>
                 {isLiked ? (
                   <AiFillHeart size={30} />
                 ) : (
@@ -127,11 +143,17 @@ const Item = () => {
                 description
               </h3>
               <p className="capitalize text-[14px]">
-                {selectedItem.description}
+                {selectedItem.moreInfo.description}
               </p>
+              {selectedItem.moreInfo.material && (
+                <p className="capitalize text-[14px]">
+                  {" "}
+                  material : {selectedItem.moreInfo.material}
+                </p>
+              )}
             </div>
             <hr />
-            <div className="my-3">
+            {/* <div className="my-3">
               <h3 className="text-[20px] font-medium text-black/80 uppercase mb-2">
                 additional information
               </h3>
@@ -156,7 +178,7 @@ const Item = () => {
               <p className="text-[17px] text-black/75 font-openSans capitalize">
                 score : {selectedItem.score} / 5.0
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -166,30 +188,30 @@ const Item = () => {
 
 export default Item;
 
-function SetItemsForChoose({
-  item,
-  selectedItem,
-  handleSelectColor,
-  category,
-}) {
-  return (
-    <span
-      style={{ background: category === "color" ? item : "" }}
-      className={`w-[35px] h-[35px] relative font-bold uppercase flex justify-center items-center border-2 border-solid ${
-        category === "color" ? "border-black" : ""
-      }`}
-      onClick={() => handleSelectColor(item)}
-    >
-      {selectedItem === item &&
-        (category === "color" ? (
-          <GrCheckboxSelected
-            size={35}
-            className="absolute [&>path]:stroke-zinc-400"
-          />
-        ) : (
-          <GrCheckbox size={35} className="absolute [&>rect]:stroke-zinc-400" />
-        ))}
-      {category === "size" && <span className="text-[17px]">{item}</span>}
-    </span>
-  );
-}
+// function SetItemsForChoose({
+//   item,
+//   selectedItem,
+//   handleSelectColor,
+//   category,
+// }) {
+//   return (
+//     <span
+//       style={{ background: category === "color" ? item : "" }}
+//       className={`w-[35px] h-[35px] relative font-bold uppercase flex justify-center items-center border-2 border-solid ${
+//         category === "color" ? "border-black" : ""
+//       }`}
+//       onClick={() => handleSelectColor(item)}
+//     >
+//       {selectedItem === item &&
+//         (category === "color" ? (
+//           <GrCheckboxSelected
+//             size={35}
+//             className="absolute [&>path]:stroke-zinc-400"
+//           />
+//         ) : (
+//           <GrCheckbox size={35} className="absolute [&>rect]:stroke-zinc-400" />
+//         ))}
+//       {category === "size" && <span className="text-[17px]">{item}</span>}
+//     </span>
+//   );
+// }

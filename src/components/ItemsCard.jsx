@@ -35,7 +35,7 @@ const ItemsCard = ({ item }) => {
               alt={item.description}
             />
           )}
-          <h5 className="text-[30px] capitalize font-spartan my-3">
+          <h5 className="text-[20px] text-white/70 capitalize font-spartan mt-6 mb-3">
             {item.title}
           </h5>
           <div className="flex justify-between items-center">
@@ -49,7 +49,7 @@ const ItemsCard = ({ item }) => {
             ) : (
               <div className="text-[20px] font-bold">{item.price}</div>
             )}
-            <ItemStars score={item.score} />
+            <ItemStars grade={item.grade} />
           </div>
         </div>
       </div>
@@ -59,15 +59,13 @@ const ItemsCard = ({ item }) => {
 
 export default ItemsCard;
 
-export function ItemStars({ score }) {
-  let stars = [],
-    majorNum = Number(score.match(/^\d/gm)[0]),
-    size = 20;
+export function ItemStars({ grade }) {
+  let stars = [], size = 20;
 
   for (var i = 1; i <= 5; i++) {
-    if (i <= majorNum) {
+    if (i <= grade.ones) {
       stars.push(<IoIosStar size={size} />);
-    } else if (i === majorNum + 1) {
+    } else if (i === grade.ones + 1) {
       stars.push(<IoIosStarHalf size={size} />);
     } else {
       stars.push(<IoIosStarOutline size={size} />);

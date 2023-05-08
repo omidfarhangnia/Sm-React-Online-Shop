@@ -1,6 +1,77 @@
 import { faker } from "@faker-js/faker";
-import { db } from "./firebase";
+import { db } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
+
+export default function GiveMyData() {
+  // i used this loop for giving test data
+  for (let i = 0; i < 91; i++) {
+    if (i <= 30 && i > 0) {
+      addDoc(collection(db, "products"), {
+        category: "men",
+        availableNum: faker.random.numeric(),
+        sizeAndColor: giveRandomData(),
+        imgPath:
+          "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg",
+        price: `$${faker.commerce.price(20, 1200, 2)}`,
+        discount: giveDiscountData(),
+        grade: giveScoreData(),
+        soldNum: giveSoldNumData(),
+        title: `${faker.commerce.productAdjective()} ${faker.commerce.productName()}`,
+        moreInfo: {
+          description: faker.commerce.productDescription(),
+          material: faker.commerce.productMaterial(),
+        },
+        isLiked: false,
+        isInShoppingCart: false,
+        overviews: giveOverviewData(),
+        id: giveItemsId(i),
+      });
+    } else if (i >= 30 && i < 60) {
+      addDoc(collection(db, "products"), {
+        category: "women",
+        availableNum: faker.random.numeric(),
+        sizeAndColor: giveRandomData(),
+        imgPath:
+          "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg",
+        price: `$${faker.commerce.price(20, 1200, 2)}`,
+        discount: giveDiscountData(),
+        grade: giveScoreData(),
+        soldNum: giveSoldNumData(),
+        title: `${faker.commerce.productAdjective()} ${faker.commerce.productName()}`,
+        moreInfo: {
+          description: faker.commerce.productDescription(),
+          material: faker.commerce.productMaterial(),
+        },
+        isLiked: false,
+        isInShoppingCart: false,
+        overviews: giveOverviewData(),
+        id: giveItemsId(i),
+      });
+    } else if (i >= 60) {
+      addDoc(collection(db, "products"), {
+        category: "children",
+        availableNum: faker.random.numeric(),
+        sizeAndColor: giveRandomData(),
+        imgPath:
+          "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382",
+        price: `$${faker.commerce.price(20, 1200, 2)}`,
+        discount: giveDiscountData(),
+        grade: giveScoreData(),
+        soldNum: giveSoldNumData(),
+        title: `${faker.commerce.productAdjective()} ${faker.commerce.productName()}`,
+        moreInfo: {
+          description: faker.commerce.productDescription(),
+          material: faker.commerce.productMaterial(),
+        },
+        isLiked: false,
+        isInShoppingCart: false,
+        overviews: giveOverviewData(),
+        id: giveItemsId(i),
+      });
+    }
+  }
+  return <h1>hello there</h1>;
+}
 
 function giveRandomData() {
   const colors = [
@@ -22,7 +93,7 @@ function giveRandomData() {
 
   for (var i = 0; i < selectedSize.length; i++) {
     const selectedColor = giveRandomColor(colors);
-    data.push({ size: selectedSize[i], color: selectedColor });
+    data.push({ sizeName: selectedSize[i], color: selectedColor });
   }
 
   return data;
@@ -110,72 +181,4 @@ function giveOverviewData() {
 
 function giveItemsId(num) {
   return num.toString().padStart(7, "0");
-}
-
-// i used this loop for giving test data
-for (var i = 0; i < 91; i++) {
-  if (i <= 30 && i > 0) {
-    addDoc(collection(db, "products"), {
-      category: "men",
-      availableNum: faker.random.numeric(),
-      sizeAndColor: giveRandomData(),
-      imgPath:
-        "https://i.pinimg.com/236x/78/d3/7c/78d37ccd2a563476b328b92123c3eaf1--mannequin-display-mannequins.jpg",
-      price: `$${faker.commerce.price(20, 1200, 2)}`,
-      discount: giveDiscountData(),
-      grade: giveScoreData(),
-      soldNum: giveSoldNumData(),
-      title: `${faker.commerce.productAdjective()} ${faker.commerce.productName()}`,
-      moreInfo: {
-        description: faker.commerce.productDescription(),
-        material: faker.commerce.productMaterial(),
-      },
-      isLiked: false,
-      isInShoppingCart: false,
-      overviews: giveOverviewData(),
-      id: giveItemsId(i),
-    });
-  } else if (i >= 30 && i < 60) {
-    addDoc(collection(db, "products"), {
-      category: "women",
-      availableNum: faker.random.numeric(),
-      sizeAndColor: giveRandomData(),
-      imgPath:
-        "https://product-images.therealreal.com/WDI405059_1_enlarged.jpg",
-      price: `$${faker.commerce.price(20, 1200, 2)}`,
-      discount: giveDiscountData(),
-      grade: giveScoreData(),
-      soldNum: giveSoldNumData(),
-      title: `${faker.commerce.productAdjective()} ${faker.commerce.productName()}`,
-      moreInfo: {
-        description: faker.commerce.productDescription(),
-        material: faker.commerce.productMaterial(),
-      },
-      isLiked: false,
-      isInShoppingCart: false,
-      overviews: giveOverviewData(),
-      id: giveItemsId(i),
-    });
-  } else if (i >= 60) {
-    addDoc(collection(db, "products"), {
-      category: "children",
-      availableNum: faker.random.numeric(),
-      sizeAndColor: giveRandomData(),
-      imgPath:
-        "https://cdn.shopify.com/s/files/1/0272/3820/3444/products/Jingle-Bells-Long-Sleeve-Zipsuit-Back_600x.jpg?v=1635151382",
-      price: `$${faker.commerce.price(20, 1200, 2)}`,
-      discount: giveDiscountData(),
-      grade: giveScoreData(),
-      soldNum: giveSoldNumData(),
-      title: `${faker.commerce.productAdjective()} ${faker.commerce.productName()}`,
-      moreInfo: {
-        description: faker.commerce.productDescription(),
-        material: faker.commerce.productMaterial(),
-      },
-      isLiked: false,
-      isInShoppingCart: false,
-      overviews: giveOverviewData(),
-      id: giveItemsId(i),
-    });
-  }
 }
