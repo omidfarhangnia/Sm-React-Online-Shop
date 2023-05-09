@@ -4,7 +4,7 @@ import { addDoc, collection } from "firebase/firestore";
 
 export default function GiveMyData() {
   // i used this loop for giving test data
-  for (let i = 0; i < 91; i++) {
+  for (let i = 0; i < 10; i++) {
     if (i <= 30 && i > 0) {
       addDoc(collection(db, "products"), {
         category: "men",
@@ -93,7 +93,7 @@ function giveRandomData() {
 
   for (var i = 0; i < selectedSize.length; i++) {
     const selectedColor = giveRandomColor(colors);
-    data.push({ sizeName: selectedSize[i], color: selectedColor });
+    data.push({ sizeName: selectedSize[i], colors: selectedColor });
   }
 
   return data;

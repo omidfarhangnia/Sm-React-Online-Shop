@@ -12,6 +12,7 @@ import ShoppingCartPage from "./pages/ShoppingCart";
 import Account from "./pages/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SelectedItem from "./pages/Item";
+import GiveMyData from "./memo/myWork";
 
 function App() {
   return (

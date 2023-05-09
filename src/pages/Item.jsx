@@ -1,37 +1,51 @@
 import React, { useEffect, useState } from "react";
 import { GiveData } from "../context/AuthContext";
 import { ItemStars, givePriceData } from "../components/ItemsCard";
-import { GrCheckbox, GrCheckboxSelected } from "react-icons/gr";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { GrCheckbox, GrCheckboxSelected } from "react-icons/gr";
 
 const Item = () => {
   const { selectedItem, user } = GiveData();
-  // const [selectedColor, setSelectedColor] = useState(selectedItem.color[0]);
-  const [size, setSize] = useState({selected: "", allSizes: []});
+  const [color, setColor] = useState({ selected: "", allColors: [] });
+  const [size, setSize] = useState({ selected: "", allSizes: [] });
   const [isLiked, setIsLiked] = useState(false);
-  
+
   useEffect(() => {
-    const sizes = [];
-    
+    let sizes = [];
     for (var i = 0; i < selectedItem.sizeAndColor.length; i++) {
       sizes.push(selectedItem.sizeAndColor[i].sizeName);
     }
-
-    setSize({selected: sizes[0], allSizes: sizes});
+    setSize({ selected: sizes[0], allSizes: sizes });
   }, []);
 
-  const priceData = givePriceData(
-    selectedItem.price,
-    selectedItem.discount.discountValue
-  );
+  useEffect(() => {
+    let filteredValue = selectedItem.sizeAndColor.filter(
+      (member) => member.sizeName === size.selected
+    );
+    setColor({
+      selected: filteredValue[0]?.colors[0],
+      allColors: filteredValue[0]?.colors,
+    });
+  }, [size]);
 
-  // function handleSelectColor(color) {
-  //   setSelectedColor(color);
-  // }
+  // const priceData = givePriceData(
+  //   selectedItem.price,
+  //   selectedItem.discount.discountValue
+  // );
 
-  // function handleSelectSize(size) {
-  //   setSelectedSize(size);
-  // }
+  function handleSelectSize(selectedSize) {
+    setSize({
+      ...size,
+      selected: selectedSize,
+    });
+  }
+
+  function handleSelectColor(selectedColor) {
+    setColor({
+      ...color,
+      selected: selectedColor,
+    });
+  }
 
   function handleAddToCard() {
     if (user) {
@@ -69,44 +83,53 @@ const Item = () => {
             />
           </div>
           <div className="w-full md:w-[50%] p-5">
-            {/* <div>
-              <p className="text-[20px] font-bold capitalize text-black/80 font-openSans">
-                Color : {selectedColor}
-              </p>
-              <div className="flex gap-3 my-3">
-                {selectedItem.color.map((color, index) => (
-                  <SetItemsForChoose
-                    key={index}
-                    handleSelectColor={handleSelectColor}
-                    item={color}
-                    selectedItem={selectedColor}
-                    category={"color"}
-                  />
-                ))}
-              </div>
-            </div> */}
-            {/* <div>
-              <p className="text-[20px] font-bold capitalize text-black/80 font-openSans">
-                Size : {selectedSize}
-              </p>
-              <div className="flex gap-3 my-3">
-                {selectedItem.size.map((size, index) => (
-                  <SetItemsForChoose
-                    key={index}
-                    handleSelectColor={handleSelectSize}
-                    item={size}
-                    selectedItem={selectedSize}
-                    category={"size"}
-                  />
-                ))}
-              </div>
-            </div> */}
             <div>
               <p className="text-[20px] font-bold capitalize text-black/80 font-openSans">
                 Size : {size.selected}
               </p>
               <div className="flex gap-3 my-3">
-                {size.allSizes.map((size, index) => (<h1>{size}</h1>))}
+                {size.allSizes.map((item, index) => (
+                  <span
+                    className="w-[35px] h-[35px] relative font-bold uppercase flex justify-center items-center border-2 border-solid"
+                    key={index}
+                    onClick={() => handleSelectSize(item)}
+                  >
+                    {size.selected === item && (
+                      <GrCheckbox
+                        size={35}
+                        className="absolute [&>rect]:stroke-zinc-400"
+                      />
+                    )}
+                    <span className="text-[17px]">{item}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-[20px] font-bold capitalize text-black/80 font-openSans">
+                Color : {color.selected}
+              </p>
+              <div className="flex gap-3 my-3">
+                {color.allColors?.map((item, index) => (
+                  <span
+                    style={{ background: item }}
+                    key={index}
+                    onClick={() => handleSelectColor(item)}
+                    className="w-[35px] h-[35px] relative flex justify-center items-center"
+                  >
+                    {color.selected === item ? (
+                      <GrCheckboxSelected
+                        size={35}
+                        className="absolute [&>path]:stroke-zinc-400"
+                      />
+                    ) : (
+                      <GrCheckbox
+                        size={35}
+                        className="absolute [&>rect]:stroke-zinc-400"
+                      />
+                    )}
+                  </span>
+                ))}
               </div>
             </div>
             <hr />
@@ -116,7 +139,7 @@ const Item = () => {
                   <div className="text-[16px] line-through decoration-red-500 decoration-[2px]">
                     {selectedItem.price}
                   </div>
-                  <div className="text-[23px] font-bold ">{`$${priceData.dollar}.${priceData.cent}`}</div>
+                  {/* <div className="text-[23px] font-bold ">{`$${priceData.dollar}.${priceData.cent}`}</div> */}
                 </span>
               ) : (
                 <div className="text-[23px] font-bold">
@@ -153,32 +176,33 @@ const Item = () => {
               )}
             </div>
             <hr />
-            {/* <div className="my-3">
+            <div className="my-3">
               <h3 className="text-[20px] font-medium text-black/80 uppercase mb-2">
                 additional information
               </h3>
               <p className="text-[17px] text-black/75 font-openSans capitalize">
                 color :{" "}
-                {selectedItem.color.map(
-                  (color, index) =>
-                    `${color}${
-                      selectedItem.color.length !== index + 1 ? ", " : ""
+                {color.allColors?.map(
+                  (member, index) =>
+                    `${member}${
+                      color.allColors?.length !== index + 1 ? ", " : ""
                     }`
                 )}
               </p>
               <p className="text-[17px] text-black/75 font-openSans capitalize">
                 size :{" "}
-                {selectedItem.size.map(
-                  (size, index) =>
-                    `${size}${
-                      selectedItem.color.length !== index + 1 ? ", " : ""
+                {size.allSizes?.map(
+                  (member, index) =>
+                    `${member}${
+                      size.allSizes?.length !== index + 1 ? ", " : ""
                     }`
                 )}
               </p>
               <p className="text-[17px] text-black/75 font-openSans capitalize">
-                score : {selectedItem.score} / 5.0
+                score : {selectedItem.grade.ones}.{selectedItem.grade.tenths} /
+                5.0
               </p>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -187,31 +211,3 @@ const Item = () => {
 };
 
 export default Item;
-
-// function SetItemsForChoose({
-//   item,
-//   selectedItem,
-//   handleSelectColor,
-//   category,
-// }) {
-//   return (
-//     <span
-//       style={{ background: category === "color" ? item : "" }}
-//       className={`w-[35px] h-[35px] relative font-bold uppercase flex justify-center items-center border-2 border-solid ${
-//         category === "color" ? "border-black" : ""
-//       }`}
-//       onClick={() => handleSelectColor(item)}
-//     >
-//       {selectedItem === item &&
-//         (category === "color" ? (
-//           <GrCheckboxSelected
-//             size={35}
-//             className="absolute [&>path]:stroke-zinc-400"
-//           />
-//         ) : (
-//           <GrCheckbox size={35} className="absolute [&>rect]:stroke-zinc-400" />
-//         ))}
-//       {category === "size" && <span className="text-[17px]">{item}</span>}
-//     </span>
-//   );
-// }
