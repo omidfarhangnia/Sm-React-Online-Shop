@@ -26,13 +26,7 @@ const SignUp = () => {
       <h1 className="text-5xl select-none md:text-6xl lg:text-8xl text-center mb-[30px] uppercase font-bebasNeue tracking-[3px]">
         sign up
       </h1>
-      <form
-        onSubmit={(e) => {
-          handleSubmit();
-          e.preventDefault();
-        }}
-        className="max-w-[700px] w-[50%] min-w-[400px] p-[25px] bg-[#121212] rounded-lg mx-auto flex flex-col items-center"
-      >
+      <div className="max-w-[700px] w-[50%] min-w-[400px] p-[25px] bg-[#121212] rounded-lg mx-auto flex flex-col items-center">
         <input
           placeholder="email"
           value={email}
@@ -91,11 +85,12 @@ const SignUp = () => {
             remember me.
           </label>
         </div>
-        <input
-          type="submit"
-          value={"sign up"}
+        <button
+          onClick={handleSubmit}
           className="w-[50%] max-w-[300px] my-5 text-3xl text-white bg-white/40 py-3 uppercase rounded-md"
-        />
+        >
+          sign up
+        </button>
         <p className="text-white/50 w-full max-w-[500px] capitalize font-spartan">
           if you already have an account{" "}
           <Link
@@ -106,7 +101,7 @@ const SignUp = () => {
           </Link>{" "}
           .
         </p>
-      </form>
+      </div>
     </>
   );
 };

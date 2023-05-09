@@ -4,7 +4,7 @@ import { addDoc, collection } from "firebase/firestore";
 
 export default function GiveMyData() {
   // i used this loop for giving test data
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i <= 90; i++) {
     if (i <= 30 && i > 0) {
       addDoc(collection(db, "products"), {
         category: "men",

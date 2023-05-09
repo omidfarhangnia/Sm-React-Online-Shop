@@ -3,12 +3,20 @@ import { GiveData } from "../context/AuthContext";
 import { ItemStars, givePriceData } from "../components/ItemsCard";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { GrCheckbox, GrCheckboxSelected } from "react-icons/gr";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const Item = () => {
   const { selectedItem, user } = GiveData();
   const [color, setColor] = useState({ selected: "", allColors: [] });
   const [size, setSize] = useState({ selected: "", allSizes: [] });
   const [isLiked, setIsLiked] = useState(false);
+  const [isInCard, setIsInCard] = useState(false);
+  const userId = doc(db, "users", `${user?.email}`);
+  const priceData = givePriceData(
+    selectedItem.price,
+    selectedItem.discount.discountValue
+  );
 
   useEffect(() => {
     let sizes = [];
@@ -28,11 +36,6 @@ const Item = () => {
     });
   }, [size]);
 
-  // const priceData = givePriceData(
-  //   selectedItem.price,
-  //   selectedItem.discount.discountValue
-  // );
-
   function handleSelectSize(selectedSize) {
     setSize({
       ...size,
@@ -47,16 +50,39 @@ const Item = () => {
     });
   }
 
-  function handleAddToCard() {
-    if (user) {
-    } else {
-      alert("please log in to your account first");
-    }
-  }
+  // function handleAddToCard() {
+  //   if (user) {
+  //   } else {
+  //     alert("please log in to your account first");
+  //   }
+  // }
 
-  function handleLikeItem() {
-    setIsLiked(!isLiked);
-  }
+  // function handleLikeItem() {
+  //   setIsLiked(!isLiked);
+  // }
+
+  const handleLikeItem = async () => {
+    if (user?.email) {
+      setIsLiked(!isLiked);
+      await updateDoc(userId, {
+        likedItems: arrayUnion({selectedItem})
+      });
+    } else {
+      alert("please log in first");
+    }
+  };
+
+  
+  const handleAddToCard = async () => {
+    if (user?.email) {
+      setIsInCard(!isInCard);
+      await updateDoc(userId, {
+        shoppingCard: arrayUnion({selectedItem})
+      });
+    } else {
+      alert("please log in first");
+    }
+  };
 
   if (Object.keys(selectedItem).length === 0) {
     return "";
@@ -139,7 +165,7 @@ const Item = () => {
                   <div className="text-[16px] line-through decoration-red-500 decoration-[2px]">
                     {selectedItem.price}
                   </div>
-                  {/* <div className="text-[23px] font-bold ">{`$${priceData.dollar}.${priceData.cent}`}</div> */}
+                  <div className="text-[23px] font-bold">{`$${priceData.dollar}.${priceData.cent}`}</div>
                 </span>
               ) : (
                 <div className="text-[23px] font-bold">
