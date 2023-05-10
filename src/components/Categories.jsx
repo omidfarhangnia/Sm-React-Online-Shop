@@ -30,24 +30,26 @@ const Categories = ({ categoryName }) => {
 
   useEffect(() => {
     setPageItems(filteredItems);
-    // // giving values for filtering colors
-    // let colors = new Set();
+    // giving values for filtering colors
+    let colors = new Set();
     // let colorsData = {};
-    // for (var i = 0; i < filteredItems.length; i++) {
-    //   for (var j = 0; j < filteredItems[i].color.length; j++) {
-    //     if (!colors.has(filteredItems[i].color[j])) {
-    //       colors.add(filteredItems[i].color[j]);
-    //       colorsData[filteredItems[i].color[j]] = false;
-    //     }
-    //   }
-    // }
+    for (var i = 0; i < filteredItems.length; i++) {
+      for (var j = 0; j < filteredItems[i].sizeAndColor.length; j++) {
+        for(var k = 0; k < filteredItems[i].sizeAndColor[j].colors.length; k++){
+          if (!colors.has(filteredItems[i].sizeAndColor[j].colors[k])) {
+            colors.add(filteredItems[i].sizeAndColor[j].colors[k]);
+            // colorsData[filteredItems[i].color[j]] = false;
+          }
+        }
+      }
+    }
 
-    // // making an object for filter data
+    // making an object for filter data
     // setFilterValue({
     //   ...filterValue,
     //   color: colorsData,
     // });
-    // setAvailableColors(Array.from(colors));
+    setAvailableColors(Array.from(colors));
   }, [items]);
 
   function handleSortItems(status) {

@@ -57,87 +57,202 @@ const Footer = () => {
       </div>
       <div className="flex flex-wrap justify-between p-5 lg:px-14 lg:py-10">
         <div className="flex flex-col min-w-[300px] w-[25%] max-w-[400px] mt-5">
-          <h6 className="font-bebasNeue uppercase text-3xl tracking-[6px]">Categories</h6>
+          <h6 className="font-bebasNeue uppercase text-3xl tracking-[6px]">
+            Categories
+          </h6>
           <ul className="my-3">
             <li>
-              <Link to="/" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">women</Link>
+              <Link
+                to="/"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                women
+              </Link>
             </li>
             <li>
-              <Link to="/" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">men</Link>
+              <Link
+                to="/"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                men
+              </Link>
             </li>
             <li>
-              <Link to="/" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">baby</Link>
+              <Link
+                to="/"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                Children
+              </Link>
             </li>
           </ul>
         </div>
         <div className="flex flex-col min-w-[300px] w-[25%] max-w-[400px] mt-5">
-          <h6 className="font-bebasNeue uppercase text-3xl tracking-[6px]">information</h6>
+          <h6 className="font-bebasNeue uppercase text-3xl tracking-[6px]">
+            information
+          </h6>
           <ul className="my-3">
             <li>
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">about us</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                about us
+              </a>
             </li>
             <li>
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">contact us</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                contact us
+              </a>
             </li>
             <li>
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">blog</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                blog
+              </a>
             </li>
             <li>
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">FAQs</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                FAQs
+              </a>
             </li>
           </ul>
         </div>
         <div className="flex flex-col min-w-[300px] w-[25%] max-w-[400px] mt-5">
-          <h6 className="font-bebasNeue uppercase text-3xl tracking-[6px]">useful links</h6>
+          <h6 className="font-bebasNeue uppercase text-3xl tracking-[6px]">
+            useful links
+          </h6>
           <ul className="my-3">
             <li>
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">terms & conditions</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                terms & conditions
+              </a>
             </li>
             <li>
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">returns & exchange</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                returns & exchange
+              </a>
             </li>
             <li>
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">shipping & delivery</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                shipping & delivery
+              </a>
             </li>
             <li>
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">privacy policy</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                privacy policy
+              </a>
             </li>
           </ul>
         </div>
         <div className="flex flex-col min-w-[300px] w-[25%] max-w-[400px] mt-5">
-          <h6 className="font-bebasNeue uppercase text-3xl tracking-[6px]">contact us</h6>
+          <h6 className="font-bebasNeue uppercase text-3xl tracking-[6px]">
+            contact us
+          </h6>
           <ul className="my-3">
             <li className="flex items-center gap-2">
               <RiMapPin2Line size={21} />
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">somewhere in the milky way</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                somewhere in the milky way
+              </a>
             </li>
             <li className="flex items-center gap-2">
               <BsTelephone size={21} />
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">+38 (050) 12 34 567</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                +38 (050) 12 34 567
+              </a>
             </li>
             <li className="flex items-center gap-2">
               <BsClock size={21} />
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">All week 24/7</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                All week 24/7
+              </a>
             </li>
             <li className="flex items-center gap-2">
               <HiOutlineMail size={21} />
-              <a href="#" className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block">random@gmail.com</a>
+              <a
+                href="#"
+                className="font-openSans text-black/60 capitalize text-[15px] md:text-[17px] my-2 inline-block"
+              >
+                random@gmail.com
+              </a>
             </li>
           </ul>
         </div>
       </div>
       <div className="flex flex-wrap justify-between gap-5 p-5 bg-black/10">
-        <p className="w-full lg:w-[20%] text-center">Copyright © 2032 all rights reserved</p>
-        <div className="flex w-full lg:w-[50%] justify-around"> 
-          <img className="max-w-[60px] object-contain" src={AESImage} alt="AES logo image"/>
-          <img className="max-w-[60px] object-contain" src={StripeImage} alt="stripe logo image"/>
-          <img className="max-w-[60px] object-contain" src={PayPalImage} alt="paypal logo image"/>
-          <img className="max-w-[60px] object-contain" src={VisaImage} alt="visa logo image"/>
-          <img className="max-w-[60px] object-contain" src={MasterCardImage} alt="master card logo image"/>
-          <img className="max-w-[60px] object-contain" src={DiscoverImage} alt="discover logo image"/>
-          <img className="max-w-[60px] object-contain" src={AmericanExpressImage} alt="american express logo image"/>
+        <p className="w-full lg:w-[20%] text-center">
+          Copyright © 2032 all rights reserved
+        </p>
+        <div className="flex w-full lg:w-[50%] justify-around">
+          <img
+            className="max-w-[60px] object-contain"
+            src={AESImage}
+            alt="AES logo image"
+          />
+          <img
+            className="max-w-[60px] object-contain"
+            src={StripeImage}
+            alt="stripe logo image"
+          />
+          <img
+            className="max-w-[60px] object-contain"
+            src={PayPalImage}
+            alt="paypal logo image"
+          />
+          <img
+            className="max-w-[60px] object-contain"
+            src={VisaImage}
+            alt="visa logo image"
+          />
+          <img
+            className="max-w-[60px] object-contain"
+            src={MasterCardImage}
+            alt="master card logo image"
+          />
+          <img
+            className="max-w-[60px] object-contain"
+            src={DiscoverImage}
+            alt="discover logo image"
+          />
+          <img
+            className="max-w-[60px] object-contain"
+            src={AmericanExpressImage}
+            alt="american express logo image"
+          />
         </div>
-        <a href="#" className="inline-block mx-auto lg:20% lg:mx-0">Developed By Omid Farhangnia</a>
+        <a href="#" className="inline-block mx-auto lg:20% lg:mx-0">
+          Developed By Omid Farhangnia
+        </a>
       </div>
     </footer>
   );

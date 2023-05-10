@@ -42,7 +42,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            to={"/MenPage"}
+            to={"/Men"}
             className="capitalize lg:text-[19px] text-[#121212] font-light"
           >
             men
@@ -50,10 +50,10 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            to={"/Baby"}
+            to={"/Children"}
             className="capitalize lg:text-[19px] text-[#121212] font-light"
           >
-            baby
+            children
           </Link>
         </li>
         <li>

@@ -4,8 +4,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import AuthContextProvider from "./context/AuthContext";
 import Women from "./pages/Women";
-import MenPage from "./pages/Men";
-import Baby from "./pages/Baby";
+import Men from "./pages/Men";
+import Children from "./pages/Children";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ShoppingCardPage from "./pages/ShoppingCard";
@@ -17,13 +17,14 @@ import GiveMyData from "./memo/myWork";
 function App() {
   return (
     <>
+      {/* <GiveMyData number={12}/> */}
       <AuthContextProvider>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Women" element={<Women />} />
-          <Route path="/MenPage" element={<MenPage />} />
-          <Route path="/Baby" element={<Baby />} />
+          <Route path="/Men" element={<Men />} />
+          <Route path="/Children" element={<Children />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/ShoppingCardPage" element={<ShoppingCardPage />} />

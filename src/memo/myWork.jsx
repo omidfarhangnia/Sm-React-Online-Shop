@@ -88,9 +88,9 @@ function giveRandomData() {
     "cyan",
     "yellow",
   ];
-  const sizes = ["xl", "lg", "l", "m", "s", "xs"];
+  const sizes = ["xl", "l", "m", "s", "xs"];
   const selectedSize = giveRandomSize(sizes);
-  const data = [{ sizeName: "xl", colors: ["green", "red", "blue"] }];
+  const data = [];
 
   for (var i = 0; i < selectedSize.length; i++) {
     const selectedColor = giveRandomColor(colors);

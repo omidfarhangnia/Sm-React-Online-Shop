@@ -1,7 +1,7 @@
 import React from "react";
 import Categories from "../components/Categories";
 
-const MenPage = () => {
+const Men = () => {
   return (
     <>
       <Categories categoryName={"men"}/>
@@ -9,4 +9,4 @@ const MenPage = () => {
   );
 };
 
-export default MenPage;
+export default Men;
