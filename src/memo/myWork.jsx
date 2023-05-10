@@ -2,10 +2,11 @@ import { faker } from "@faker-js/faker";
 import { db } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
 
-export default function GiveMyData() {
+export default function GiveMyData({ number }) {
+  const chartOne = number / 3, chartTwo = number / 3 * 2 , chartThree = number / 3 * 3;
   // i used this loop for giving test data
-  for (let i = 0; i <= 90; i++) {
-    if (i <= 30 && i > 0) {
+  for (let i = 0; i <= number; i++) {
+    if (i <= chartOne && i > 0) {
       addDoc(collection(db, "products"), {
         category: "men",
         availableNum: faker.random.numeric(),
@@ -22,11 +23,11 @@ export default function GiveMyData() {
           material: faker.commerce.productMaterial(),
         },
         isLiked: false,
-        isInShoppingCart: false,
+        isInShoppingCard: false,
         overviews: giveOverviewData(),
         id: giveItemsId(i),
       });
-    } else if (i >= 30 && i < 60) {
+    } else if (i >= chartOne && i < chartTwo) {
       addDoc(collection(db, "products"), {
         category: "women",
         availableNum: faker.random.numeric(),
@@ -43,11 +44,11 @@ export default function GiveMyData() {
           material: faker.commerce.productMaterial(),
         },
         isLiked: false,
-        isInShoppingCart: false,
+        isInShoppingCard: false,
         overviews: giveOverviewData(),
         id: giveItemsId(i),
       });
-    } else if (i >= 60) {
+    } else if (i >= chartThree) {
       addDoc(collection(db, "products"), {
         category: "children",
         availableNum: faker.random.numeric(),
@@ -64,7 +65,7 @@ export default function GiveMyData() {
           material: faker.commerce.productMaterial(),
         },
         isLiked: false,
-        isInShoppingCart: false,
+        isInShoppingCard: false,
         overviews: giveOverviewData(),
         id: giveItemsId(i),
       });

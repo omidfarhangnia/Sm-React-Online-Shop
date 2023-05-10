@@ -70,7 +70,7 @@ const Navbar = () => {
           {user ? (
             <button
               onClick={() => {
-                LogOut()
+                LogOut();
                 navigate("/");
               }}
               className="capitalize mr-6 lg:text-[17px] text-[#121212] font-light px-5 pt-2 pb-1 rounded-full border-2 border-solid border-black"
@@ -99,7 +99,7 @@ const Navbar = () => {
               <Link to={"/Account"}>
                 <MdOutlineAccountCircle size={26} />
               </Link>
-              <Link to={"/ShoppingCartPage"}>
+              <Link to={"/ShoppingCardPage"}>
                 <FiShoppingCart size={26} />
               </Link>
             </div>

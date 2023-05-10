@@ -13,7 +13,7 @@ const ItemsCard = ({ item }) => {
         onClick={() => {
           setSelectedItem(item);
         }}
-        className="min-w-[300px] w-[30%] max-w-[350px] flex flex-col mx-auto select-none relative p-5 cursor-pointer"
+        className="min-w-[330px] w-[30%] max-w-[350px] flex flex-col mx-auto select-none relative p-5 cursor-pointer"
       >
         <div className="w-[104%] h-[104%] bg-gradient-to-br from-[#000000] to-[#434343] absolute top-[-2%] left-[-2%] rounded-md opacity-90 blur-[1px]"></div>
         <div className="relative text-white flex flex-col justify-around">
@@ -59,8 +59,8 @@ const ItemsCard = ({ item }) => {
 
 export default ItemsCard;
 
-export function ItemStars({ grade }) {
-  let stars = [], size = 20;
+export function ItemStars({ grade, size = 20 }) {
+  let stars = [];
 
   for (var i = 1; i <= 5; i++) {
     if (i <= grade.ones) {

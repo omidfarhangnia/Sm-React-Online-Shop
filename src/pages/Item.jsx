@@ -13,6 +13,7 @@ const Item = () => {
   const [isLiked, setIsLiked] = useState(false);
   const [isInCard, setIsInCard] = useState(false);
   const userId = doc(db, "users", `${user?.email}`);
+  const [seeMoreOverview, setSeeMoreOverview] = useState(false);
   const priceData = givePriceData(
     selectedItem.price,
     selectedItem.discount.discountValue
@@ -50,34 +51,22 @@ const Item = () => {
     });
   }
 
-  // function handleAddToCard() {
-  //   if (user) {
-  //   } else {
-  //     alert("please log in to your account first");
-  //   }
-  // }
-
-  // function handleLikeItem() {
-  //   setIsLiked(!isLiked);
-  // }
-
   const handleLikeItem = async () => {
     if (user?.email) {
       setIsLiked(!isLiked);
       await updateDoc(userId, {
-        likedItems: arrayUnion({selectedItem})
+        likedItems: arrayUnion({ selectedItem }),
       });
     } else {
       alert("please log in first");
     }
   };
 
-  
   const handleAddToCard = async () => {
     if (user?.email) {
       setIsInCard(!isInCard);
       await updateDoc(userId, {
-        shoppingCard: arrayUnion({selectedItem})
+        shoppingCardItem: arrayUnion({ selectedItem }),
       });
     } else {
       alert("please log in first");
@@ -230,10 +219,59 @@ const Item = () => {
               </p>
             </div>
           </div>
+          <div className="w-full flex flex-col p-6">
+            <div
+              id="OverViews"
+              className="w-full flex flex-wrap justify-around gap-[20px]"
+            >
+              {selectedItem.overviews.number === 0 ? (
+                <p className="capitalize text-[35px] text-gray-500  border-2 border-solid border-gray-500 px-5 py-3 rounded-2xl">there is no overview</p>
+              ) : (
+                selectedItem.overviews.overview.map((overview, index) => {
+                  if (seeMoreOverview) {
+                    return <ShowOverView key={index} overview={overview} />;
+                  } else if (index < 2) {
+                    return <ShowOverView key={index} overview={overview} />;
+                  }
+                })
+              )}
+            </div>
+            {selectedItem.overviews.number !== 0 && (
+              <a
+                onClick={() => {
+                  setSeeMoreOverview(!seeMoreOverview);
+                }}
+                href="#OverViews"
+                className="bg-black/75 text-center w-[50%] min-w-[350px] max-w-[450px] mx-auto text-[25px] text-white font-openSans py-3 rounded-xl mt-5"
+              >
+                <button>show {seeMoreOverview ? "less" : "more"}</button>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     );
   }
 };
 
+function ShowOverView({ overview }) {
+  return (
+    <>
+      <div className="flex flex-col my-5 min-w-[300px] w-[50%] max-w-[500px]">
+        <div className="flex flex-wrap justify-between items-center mb-3">
+          <h5 className="capitalize font-openSans text-[25px]">
+            {overview.userName}
+          </h5>
+          <div className="inline-flex justify-between mt-3 gap-3 w-full md:w-auto md:mt-0">
+            <p className="text-gray-400 text-[15px] font-bold">
+              {overview.time} months ago
+            </p>
+            <ItemStars grade={overview.userGrade} size={17} />
+          </div>
+        </div>
+        <p className="text-justify">{overview.userOverview}</p>
+      </div>
+    </>
+  );
+}
 export default Item;

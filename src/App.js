@@ -8,10 +8,11 @@ import MenPage from "./pages/Men";
 import Baby from "./pages/Baby";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import ShoppingCartPage from "./pages/ShoppingCart";
+import ShoppingCardPage from "./pages/ShoppingCard";
 import Account from "./pages/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SelectedItem from "./pages/Item";
+import GiveMyData from "./memo/myWork";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path="/Baby" element={<Baby />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/ShoppingCartPage" element={<ShoppingCartPage />} />
+          <Route path="/ShoppingCardPage" element={<ShoppingCardPage />} />
           <Route path="/Item" element={<SelectedItem />} />
           <Route
             path="/Account"

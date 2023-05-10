@@ -4,7 +4,7 @@ import Categories from "../components/Categories";
 const Baby = () => {
   return (
     <>
-      <Categories categoryName={"baby"} />
+      <Categories categoryName={"children"} />
     </>
   );
 };
