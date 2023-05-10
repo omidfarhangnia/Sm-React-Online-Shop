@@ -129,20 +129,17 @@ const Categories = ({ categoryName }) => {
       case "bestScore": {
         setPageItems(
           items.sort((a, b) => {
-            const AScore = giveScore(a.score);
-            const BScore = giveScore(b.score);
-
-            if (AScore.major > BScore.major) {
+            if (a.grade.ones > b.grade.ones) {
               return -1;
             }
-            if (AScore.major < BScore.major) {
+            if (a.grade.ones < b.grade.ones) {
               return 1;
             }
-            if (AScore.major === BScore.major) {
-              if (AScore.minor > BScore.minor) {
+            if (a.grade.ones === b.grade.ones) {
+              if (a.grade.tenths > b.grade.tenths) {
                 return -1;
               }
-              if (AScore.minor < BScore.minor) {
+              if (a.grade.tenths < b.grade.tenths) {
                 return 1;
               }
             }
@@ -441,7 +438,7 @@ const Categories = ({ categoryName }) => {
           </div>
         </form>
       )}
-      <div className="flex flex-wrap justify-around gap-[50px] my-24 transition-all">
+      <div className="flex flex-wrap justify-around gap-[80px] my-24 w-[90%] mx-auto transition-all">
         {pageItems.map((item, index) => {
           return <ItemsCard key={index} item={item} />;
         })}
