@@ -114,7 +114,7 @@ function giveRandomSize(arr) {
 
 function giveRandomColor(arr) {
   const selectedColor = new Set();
-  const howManyColor = Math.floor(Math.random() * arr.length + 1);
+  const howManyColor = Math.floor(Math.random() * 7 + 1);
 
   while (selectedColor.size !== howManyColor) {
     const randomSizeNumber = Math.floor(Math.random() * arr.length);

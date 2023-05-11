@@ -193,11 +193,12 @@ const Categories = ({ categoryName }) => {
       colorFilter = returnFilteredValue("color", filterValue),
       items = [...filteredItems];
 
+    // filtering size
     if (sizeFilter.length > 0) {
       items = items.filter((item) => {
-          for (let i = 0; i < item.size.length; i++) {
+          for (let i = 0; i < item.sizeAndColor.length; i++) {
             for (let j = 0; j < sizeFilter.length; j++) {
-              if (item.size[i] === sizeFilter[j]) {
+              if (item.sizeAndColor[i].sizeName === sizeFilter[j]) {
                 return 1;
               }
             }
@@ -226,10 +227,12 @@ const Categories = ({ categoryName }) => {
     // filtering color
     if (colorFilter.length > 0) {
       items = items.filter((item) => {
-          for(let i = 0; i < item.color.length; i++){
+          for(let i = 0; i < item.sizeAndColor.length; i++){
             for(let j = 0; j < colorFilter.length; j++){
-              if(item.color[i] === colorFilter[j]){
-                return 1;
+              for(let k = 0; k < item.sizeAndColor[i].colors.length; k++){
+                if(item.sizeAndColor[i].colors[k] === colorFilter[j]){
+                  return 1;
+                }
               }
             }
           }

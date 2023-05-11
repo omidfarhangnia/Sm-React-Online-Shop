@@ -17,6 +17,11 @@ const ItemsCard = ({ item }) => {
       >
         <div className="w-[104%] h-[104%] bg-gradient-to-br from-[#000000] to-[#434343] absolute top-[-2%] left-[-2%] rounded-md opacity-90 blur-[1px]"></div>
         <div className="relative text-white flex flex-col justify-around">
+          <div>
+            {item.sizeAndColor.map((item) => (
+              <span className="inline-block mx-2 text-[7px]">{item.sizeName} === {JSON.stringify(item.colors)}</span>
+            ))}
+          </div>
           {item.discount.hasDiscount ? (
             <span
               after={item.discount.discountValue + "%"}
