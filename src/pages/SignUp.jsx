@@ -94,7 +94,7 @@ const SignUp = () => {
         <p className="text-white/50 w-full max-w-[500px] capitalize font-spartan">
           if you already have an account{" "}
           <Link
-            to={"/SignUp"}
+            to={"/SignIn"}
             className="bg-white/70 px-3 py-1 rounded-sm text-black font-bold"
           >
             sign in

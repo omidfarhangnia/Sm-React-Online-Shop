@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 import { collection, doc, onSnapshot, query, setDoc } from "firebase/firestore";
 import { db, auth } from "../firebase";
 import {
@@ -43,7 +43,7 @@ const AuthContextProvider = ({ children }) => {
       email: email,
       password: password,
       likedItems: [],
-      shoppingCard: [],
+      shoppingCardItems: [],
     });
   }
 

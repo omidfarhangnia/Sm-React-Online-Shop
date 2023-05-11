@@ -55,7 +55,7 @@ const Item = () => {
     if (user?.email) {
       setIsLiked(!isLiked);
       await updateDoc(userId, {
-        likedItems: arrayUnion({ selectedItem }),
+        likedItems: arrayUnion(selectedItem),
       });
     } else {
       alert("please log in first");
@@ -66,7 +66,7 @@ const Item = () => {
     if (user?.email) {
       setIsInCard(!isInCard);
       await updateDoc(userId, {
-        shoppingCardItem: arrayUnion({ selectedItem }),
+        shoppingCardItems: arrayUnion(selectedItem),
       });
     } else {
       alert("please log in first");
