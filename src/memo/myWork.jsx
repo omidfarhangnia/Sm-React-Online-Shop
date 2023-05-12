@@ -22,10 +22,8 @@ export default function GiveMyData({ number }) {
           description: faker.commerce.productDescription(),
           material: faker.commerce.productMaterial(),
         },
-        isLiked: false,
-        isInShoppingCard: false,
         overviews: giveOverviewData(),
-        id: giveItemsId(i),
+        id: "",
       });
     } else if (i >= chartOne && i < chartTwo) {
       addDoc(collection(db, "products"), {
@@ -43,10 +41,8 @@ export default function GiveMyData({ number }) {
           description: faker.commerce.productDescription(),
           material: faker.commerce.productMaterial(),
         },
-        isLiked: false,
-        isInShoppingCard: false,
         overviews: giveOverviewData(),
-        id: giveItemsId(i),
+        id: "",
       });
     } else if (i >= chartThree) {
       addDoc(collection(db, "products"), {
@@ -64,10 +60,8 @@ export default function GiveMyData({ number }) {
           description: faker.commerce.productDescription(),
           material: faker.commerce.productMaterial(),
         },
-        isLiked: false,
-        isInShoppingCard: false,
         overviews: giveOverviewData(),
-        id: giveItemsId(i),
+        id: "",
       });
     }
   }
@@ -180,6 +174,6 @@ function giveOverviewData() {
   return overviews;
 }
 
-function giveItemsId(num) {
-  return num.toString().padStart(7, "0");
-}
+// function giveItemsId(num) {
+//   return num.toString().padStart(7, "0");
+// }
