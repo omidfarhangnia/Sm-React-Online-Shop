@@ -1,5 +1,5 @@
 import { doc, onSnapshot } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { db } from "../firebase";
 import { GiveData } from "../context/AuthContext";
 import ItemsCard from "../components/ItemsCard";
@@ -9,7 +9,7 @@ const Account = () => {
   const [likedItems, setLikedItems] = useState([]);
   const [shoppingCardItems, setShoppingCardItems] = useState([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
       setLikedItems(doc.data()?.likedItems);
     });
@@ -20,14 +20,14 @@ const Account = () => {
 
   return (
     <>
-      <div>
-        <h1>liked items</h1>
+      <div className="flex flex-wrap justify-around gap-[80px] my-24 w-[90%] mx-auto transition-all">
+        <h1 className="w-[90%] text-5xl font-openSans capitalize px-10 py-10 text-white bg-gradient-to-r from-[#000000] to-[#a7a7a7]">liked items</h1>
         {likedItems.map((item, index) => {
           return <ItemsCard key={index} item={item} />;
         })}
       </div>
-      <div>
-      <h1>shopping card items</h1>
+      <div className="flex flex-wrap justify-around gap-[80px] my-24 w-[90%] mx-auto transition-all">
+      <h1 className="w-[90%] text-5xl font-openSans capitalize px-10 py-10 text-white bg-gradient-to-r from-[#000000] to-[#a7a7a7]">shopping card items</h1>
         {shoppingCardItems.map((item, index) => {
           return <ItemsCard key={index} item={item} />;
         })}

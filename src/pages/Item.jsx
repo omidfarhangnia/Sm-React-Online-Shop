@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { GiveData } from "../context/AuthContext";
 import { ItemStars, givePriceData } from "../components/ItemsCard";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { GrCheckbox, GrCheckboxSelected } from "react-icons/gr";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 const Item = () => {
@@ -14,10 +14,14 @@ const Item = () => {
   const [isInCard, setIsInCard] = useState(false);
   const userId = doc(db, "users", `${user?.email}`);
   const [seeMoreOverview, setSeeMoreOverview] = useState(false);
+  const [shoppingCardItems, setShoppingCardItems] = useState([]);
+  const [likedItems, setLikedItems] = useState([]);
   const priceData = givePriceData(
     selectedItem.price,
     selectedItem.discount.discountValue
   );
+  const itemRef = doc(db, "users", `${user?.email}`)
+
 
   useEffect(() => {
     let sizes = [];
@@ -37,6 +41,31 @@ const Item = () => {
     });
   }, [size]);
 
+  useLayoutEffect(() => {
+    if(user){
+      onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+        setLikedItems(doc.data()?.likedItems);
+      });
+      onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+        setShoppingCardItems(doc.data()?.shoppingCardItems);
+      });
+    }
+  }, [user?.email]);
+
+  useEffect(() => {
+    const result = likedItems.filter((item) => item.id === selectedItem.id);
+    if(result.length === 1){
+      setIsLiked(true);
+    }
+  }, [likedItems])
+
+  useEffect(() => {
+    const result = shoppingCardItems.filter((item) => item.id === selectedItem.id);
+    if(result.length === 1){
+      setIsInCard(true);
+    }
+  }, [shoppingCardItems]);
+
   function handleSelectSize(selectedSize) {
     setSize({
       ...size,
@@ -51,27 +80,43 @@ const Item = () => {
     });
   }
 
-  const handleLikeItem = async () => {
+  const toggleLikeItem = async (itemId) => {
     if (user?.email) {
-      setIsLiked(!isLiked);
-      await updateDoc(userId, {
-        likedItems: arrayUnion(selectedItem),
-      });
+      if(isLiked === true) {
+        setIsLiked(false);
+        const result = likedItems.filter((item) => item.id !== itemId);
+        await updateDoc(itemRef, {
+          likedItems: result
+        })
+      }else{
+        setIsLiked(true);
+        await updateDoc(userId, {
+          likedItems: arrayUnion(selectedItem),
+        });
+      }
     } else {
       alert("please log in first");
     }
   };
 
-  const handleAddToCard = async () => {
+  const toggleAddToCard = async (itemId) => {
     if (user?.email) {
-      setIsInCard(!isInCard);
-      await updateDoc(userId, {
-        shoppingCardItems: arrayUnion(selectedItem),
-      });
+      if(isInCard === true) {
+        setIsInCard(false);
+        const result = shoppingCardItems.filter((item) => item.id !== itemId);
+        await updateDoc(itemRef, {
+          shoppingCardItems: result
+        })
+      }else{
+        setIsInCard(true);
+        await updateDoc(userId, {
+          shoppingCardItems: arrayUnion(selectedItem),
+        });
+      }
     } else {
       alert("please log in first");
     }
-  };
+  }
 
   if (Object.keys(selectedItem).length === 0) {
     return "";
@@ -163,11 +208,11 @@ const Item = () => {
               )}
               <button
                 className="bg-[#121212] font-light font-openSans tracking-[2.5px] uppercase text-white/80 px-5 py-5"
-                onClick={handleAddToCard}
+                onClick={() => toggleAddToCard(selectedItem.id)}
               >
-                add to card
+                {isInCard ? "remove from card" : "add to card"}
               </button>
-              <div onClick={handleLikeItem}>
+              <div onClick={() => toggleLikeItem(selectedItem.id)}>
                 {isLiked ? (
                   <AiFillHeart size={30} />
                 ) : (
