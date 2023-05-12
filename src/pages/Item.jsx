@@ -20,8 +20,7 @@ const Item = () => {
     selectedItem.price,
     selectedItem.discount.discountValue
   );
-  const itemRef = doc(db, "users", `${user?.email}`)
-
+  const itemRef = doc(db, "users", `${user?.email}`);
 
   useEffect(() => {
     let sizes = [];
@@ -42,27 +41,43 @@ const Item = () => {
   }, [size]);
 
   useLayoutEffect(() => {
-    if(user){
-      onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+      if (doc.data()?.likedItems === undefined) {
+        setLikedItems([]);
+      } else {
         setLikedItems(doc.data()?.likedItems);
-      });
-      onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+      }
+    });
+    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+      if (doc.data()?.shoppingCardItems === undefined) {
+        setShoppingCardItems([]);
+      } else {
         setShoppingCardItems(doc.data()?.shoppingCardItems);
-      });
-    }
+      }
+    });
   }, [user?.email]);
 
   useEffect(() => {
-    const result = likedItems.filter((item) => item.id === selectedItem.id);
-    if(result.length === 1){
-      setIsLiked(true);
+    if (likedItems.length !== 0) {
+      const result = likedItems.filter((item) => item.id === selectedItem.id);
+      if (result.length === 1) {
+        setIsLiked(true);
+      }
+    } else {
+      setIsLiked(false);
     }
-  }, [likedItems])
+  }, [likedItems]);
 
   useEffect(() => {
-    const result = shoppingCardItems.filter((item) => item.id === selectedItem.id);
-    if(result.length === 1){
-      setIsInCard(true);
+    if (shoppingCardItems.length !== 0) {
+      const result = shoppingCardItems.filter(
+        (item) => item.id === selectedItem.id
+      );
+      if (result.length === 1) {
+        setIsInCard(true);
+      }
+    } else {
+      setIsInCard(false);
     }
   }, [shoppingCardItems]);
 
@@ -82,16 +97,16 @@ const Item = () => {
 
   const toggleLikeItem = async (itemId) => {
     if (user?.email) {
-      if(isLiked === true) {
+      if (isLiked === true) {
         setIsLiked(false);
         const result = likedItems.filter((item) => item.id !== itemId);
         await updateDoc(itemRef, {
-          likedItems: result
-        })
-      }else{
+          likedItems: result,
+        });
+      } else {
         setIsLiked(true);
         await updateDoc(userId, {
-          likedItems: arrayUnion(selectedItem),
+          likedItems: arrayUnion({ selectedItem }),
         });
       }
     } else {
@@ -101,13 +116,13 @@ const Item = () => {
 
   const toggleAddToCard = async (itemId) => {
     if (user?.email) {
-      if(isInCard === true) {
+      if (isInCard === true) {
         setIsInCard(false);
         const result = shoppingCardItems.filter((item) => item.id !== itemId);
         await updateDoc(itemRef, {
-          shoppingCardItems: result
-        })
-      }else{
+          shoppingCardItems: result,
+        });
+      } else {
         setIsInCard(true);
         await updateDoc(userId, {
           shoppingCardItems: arrayUnion(selectedItem),
@@ -116,7 +131,7 @@ const Item = () => {
     } else {
       alert("please log in first");
     }
-  }
+  };
 
   if (Object.keys(selectedItem).length === 0) {
     return "";
@@ -270,7 +285,9 @@ const Item = () => {
               className="w-full flex flex-wrap justify-around gap-[20px]"
             >
               {selectedItem.overviews.number === 0 ? (
-                <p className="capitalize text-[35px] text-gray-500  border-2 border-solid border-gray-500 px-5 py-3 rounded-2xl">there is no overview</p>
+                <p className="capitalize text-[35px] text-gray-500  border-2 border-solid border-gray-500 px-5 py-3 rounded-2xl">
+                  there is no overview
+                </p>
               ) : (
                 selectedItem.overviews.overview.map((overview, index) => {
                   if (seeMoreOverview) {

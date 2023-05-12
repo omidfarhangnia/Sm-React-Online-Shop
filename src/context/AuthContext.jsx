@@ -67,24 +67,3 @@ export default AuthContextProvider;
 export function GiveData() {
   return useContext(AuthContext);
 }
-
-
-
-// const movieID = doc(db, "users", `${user?.email}`);
-
-// const saveShow = async () => {
-//   if (user?.email) {
-//     setIsLiked(!isLiked);
-//     setSaved(true);
-
-//     await updateDoc(movieID, {
-//       savedShows: arrayUnion({
-//         id: item.id,
-//         title: item.title,
-//         img: item.backdrop_path,
-//       }),
-//     });
-//   } else {
-//     alert("please log in to save a movie");
-//   }
-// };
