@@ -106,7 +106,7 @@ const Item = () => {
       } else {
         setIsLiked(true);
         await updateDoc(userId, {
-          likedItems: arrayUnion({ selectedItem }),
+          likedItems: arrayUnion(selectedItem),
         });
       }
     } else {

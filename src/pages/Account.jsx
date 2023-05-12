@@ -27,6 +27,7 @@ const Account = () => {
         {likedItems?.map((item, index) => {
           return <ItemsCard key={index} item={item} />;
         })}
+        {likedItems.length === 0 && <p className="text-1xl md:text-2xl capitalize underline underline-offset-[5px]">you have no liked item</p>}
       </div>
     </>
   );

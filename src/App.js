@@ -17,7 +17,7 @@ import GiveMyData from "./memo/myWork";
 function App() {
   return (
     <>
-      {/* <GiveMyData number={12}/> */}
+      <GiveMyData />
       <AuthContextProvider>
         <Header />
         <Routes>

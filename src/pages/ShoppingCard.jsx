@@ -27,6 +27,7 @@ const ShoppingCardPage = () => {
         {shoppingCardItems?.map((item, index) => {
           return <ItemsCard key={index} item={item} />;
         })}
+        {shoppingCardItems.length === 0 && <p className="text-1xl md:text-2xl capitalize underline underline-offset-[5px]">you have no item in your shopping card</p>}
       </div>
     </>
   );
