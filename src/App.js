@@ -12,12 +12,10 @@ import ShoppingCardPage from "./pages/ShoppingCard";
 import Account from "./pages/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SelectedItem from "./pages/Item";
-import GiveMyData from "./memo/myWork";
 
 function App() {
   return (
     <>
-      <GiveMyData />
       <AuthContextProvider>
         <Header />
         <Routes>

@@ -56,14 +56,6 @@ const Navbar = () => {
             children
           </Link>
         </li>
-        <li>
-          <a
-            href="#"
-            className="capitalize lg:text-[19px] text-[#121212] font-light"
-          >
-            About Us
-          </a>
-        </li>
       </ul>
       <div className="hidden md:flex items-center">
         <div className="flex gap-3">
