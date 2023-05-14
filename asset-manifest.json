@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Sm-React-Online-Shop/static/css/main.479da1ef.css",
+    "main.js": "/Sm-React-Online-Shop/static/js/main.155c8c58.js",
+    "index.html": "/Sm-React-Online-Shop/index.html",
+    "main.479da1ef.css.map": "/Sm-React-Online-Shop/static/css/main.479da1ef.css.map",
+    "main.155c8c58.js.map": "/Sm-React-Online-Shop/static/js/main.155c8c58.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.479da1ef.css",
+    "static/js/main.155c8c58.js"
+  ]
+}
